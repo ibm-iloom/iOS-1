@@ -7,13 +7,27 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1DDDC0A52DC393086E1C4CE2 /* Pods_AweConfPushNotification.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 156BD87D5F0492479CA912A5 /* Pods_AweConfPushNotification.framework */; };
+		2CA6C35FCA962D4098FDB8EF /* AweConfApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CA6CD682836F8CA0A50C4F8 /* AweConfApi.swift */; };
 		485A5670202088C500BECD56 /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 485A566F202088C500BECD56 /* NotificationService.swift */; };
 		485A5674202088C500BECD56 /* AweConfPushNotification.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 485A566D202088C400BECD56 /* AweConfPushNotification.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		4879DEFF2020760300CBDC14 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4879DEFE2020760300CBDC14 /* AppDelegate.swift */; };
-		4879DF012020760300CBDC14 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4879DF002020760300CBDC14 /* ViewController.swift */; };
-		4879DF042020760300CBDC14 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4879DF022020760300CBDC14 /* Main.storyboard */; };
 		4879DF062020760300CBDC14 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4879DF052020760300CBDC14 /* Assets.xcassets */; };
 		4879DF092020760300CBDC14 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4879DF072020760300CBDC14 /* LaunchScreen.storyboard */; };
+		48AD0E2E2020AA050071C441 /* ConferenceList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 48AD0E2D2020AA050071C441 /* ConferenceList.storyboard */; };
+		48AD0E302020AA140071C441 /* ConferenceDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 48AD0E2F2020AA140071C441 /* ConferenceDetail.storyboard */; };
+		48AD0E322020AA2F0071C441 /* ConferenceListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48AD0E312020AA2F0071C441 /* ConferenceListViewController.swift */; };
+		48AD0E342020AA3C0071C441 /* ConferenceDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48AD0E332020AA3C0071C441 /* ConferenceDetailViewController.swift */; };
+		48AD0E362020AA4C0071C441 /* ConferenceSubmitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48AD0E352020AA4C0071C441 /* ConferenceSubmitViewController.swift */; };
+		48AD0E382020AA570071C441 /* ConferenceSubmit.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 48AD0E372020AA570071C441 /* ConferenceSubmit.storyboard */; };
+		48AD0E3E2020AAC70071C441 /* ConferenceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48AD0E3D2020AAC70071C441 /* ConferenceTableViewCell.swift */; };
+		48AD0E432020AC080071C441 /* AwesomeAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48AD0E422020AC080071C441 /* AwesomeAnnotation.swift */; };
+		48AD0E462020AC340071C441 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48AD0E452020AC340071C441 /* UIColor+Extension.swift */; };
+		48AD0E482020AC900071C441 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48AD0E472020AC900071C441 /* BaseViewController.swift */; };
+		48AD0E4D2020ACF50071C441 /* Awesome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48AD0E492020ACF50071C441 /* Awesome.swift */; };
+		48AD0E4E2020ACF50071C441 /* MemoryDb.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48AD0E4A2020ACF50071C441 /* MemoryDb.swift */; };
+		48AD0E4F2020ACF50071C441 /* Year.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48AD0E4B2020ACF50071C441 /* Year.swift */; };
+		48AD0E502020ACF50071C441 /* Conference.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48AD0E4C2020ACF50071C441 /* Conference.swift */; };
 		86ED9B67447CC8C8DAD8F036 /* Pods_AweConf.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BFAA6F4BA9FE442EC25C2962 /* Pods_AweConf.framework */; };
 /* End PBXBuildFile section */
 
@@ -42,17 +56,33 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		156BD87D5F0492479CA912A5 /* Pods_AweConfPushNotification.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AweConfPushNotification.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		27998D3242F323DD45930626 /* Pods-AweConfPushNotification.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AweConfPushNotification.release.xcconfig"; path = "Pods/Target Support Files/Pods-AweConfPushNotification/Pods-AweConfPushNotification.release.xcconfig"; sourceTree = "<group>"; };
+		2CA6CD682836F8CA0A50C4F8 /* AweConfApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AweConfApi.swift; sourceTree = "<group>"; };
+		42DED8B4BFDF332299616620 /* Pods-AweConfPushNotification.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AweConfPushNotification.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AweConfPushNotification/Pods-AweConfPushNotification.debug.xcconfig"; sourceTree = "<group>"; };
 		485A566D202088C400BECD56 /* AweConfPushNotification.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = AweConfPushNotification.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		485A566F202088C500BECD56 /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
 		485A5671202088C500BECD56 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		485A56792020899A00BECD56 /* AweConf.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = AweConf.entitlements; sourceTree = "<group>"; };
 		4879DEFB2020760300CBDC14 /* AweConf.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AweConf.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4879DEFE2020760300CBDC14 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		4879DF002020760300CBDC14 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		4879DF032020760300CBDC14 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4879DF052020760300CBDC14 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4879DF082020760300CBDC14 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4879DF0A2020760300CBDC14 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		48AD0E2D2020AA050071C441 /* ConferenceList.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ConferenceList.storyboard; sourceTree = "<group>"; };
+		48AD0E2F2020AA140071C441 /* ConferenceDetail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ConferenceDetail.storyboard; sourceTree = "<group>"; };
+		48AD0E312020AA2F0071C441 /* ConferenceListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConferenceListViewController.swift; sourceTree = "<group>"; };
+		48AD0E332020AA3C0071C441 /* ConferenceDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConferenceDetailViewController.swift; sourceTree = "<group>"; };
+		48AD0E352020AA4C0071C441 /* ConferenceSubmitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConferenceSubmitViewController.swift; sourceTree = "<group>"; };
+		48AD0E372020AA570071C441 /* ConferenceSubmit.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ConferenceSubmit.storyboard; sourceTree = "<group>"; };
+		48AD0E3D2020AAC70071C441 /* ConferenceTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConferenceTableViewCell.swift; sourceTree = "<group>"; };
+		48AD0E422020AC080071C441 /* AwesomeAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AwesomeAnnotation.swift; sourceTree = "<group>"; };
+		48AD0E452020AC340071C441 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
+		48AD0E472020AC900071C441 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		48AD0E492020ACF50071C441 /* Awesome.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Awesome.swift; sourceTree = "<group>"; };
+		48AD0E4A2020ACF50071C441 /* MemoryDb.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemoryDb.swift; sourceTree = "<group>"; };
+		48AD0E4B2020ACF50071C441 /* Year.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Year.swift; sourceTree = "<group>"; };
+		48AD0E4C2020ACF50071C441 /* Conference.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Conference.swift; sourceTree = "<group>"; };
 		87DD1910A2C8A1FC7F00935A /* Pods-AweConf.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AweConf.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AweConf/Pods-AweConf.debug.xcconfig"; sourceTree = "<group>"; };
 		BFAA6F4BA9FE442EC25C2962 /* Pods_AweConf.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AweConf.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C371C60C1AA95F1C4344E675 /* Pods-AweConf.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AweConf.release.xcconfig"; path = "Pods/Target Support Files/Pods-AweConf/Pods-AweConf.release.xcconfig"; sourceTree = "<group>"; };
@@ -63,6 +93,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1DDDC0A52DC393086E1C4CE2 /* Pods_AweConfPushNotification.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -81,6 +112,7 @@
 			isa = PBXGroup;
 			children = (
 				BFAA6F4BA9FE442EC25C2962 /* Pods_AweConf.framework */,
+				156BD87D5F0492479CA912A5 /* Pods_AweConfPushNotification.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -117,10 +149,12 @@
 		4879DEFD2020760300CBDC14 /* AweConf */ = {
 			isa = PBXGroup;
 			children = (
+				48AD0E442020AC250071C441 /* Extension */,
+				48AD0E2C2020A9F10071C441 /* Model */,
+				48AD0E2B2020A9E90071C441 /* Network */,
+				48AD0E2A2020A9DF0071C441 /* View */,
 				485A56792020899A00BECD56 /* AweConf.entitlements */,
 				4879DEFE2020760300CBDC14 /* AppDelegate.swift */,
-				4879DF002020760300CBDC14 /* ViewController.swift */,
-				4879DF022020760300CBDC14 /* Main.storyboard */,
 				4879DF052020760300CBDC14 /* Assets.xcassets */,
 				4879DF072020760300CBDC14 /* LaunchScreen.storyboard */,
 				4879DF0A2020760300CBDC14 /* Info.plist */,
@@ -128,11 +162,96 @@
 			path = AweConf;
 			sourceTree = "<group>";
 		};
+		48AD0E2A2020A9DF0071C441 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				48AD0E3A2020AA690071C441 /* Detail */,
+				48AD0E392020AA5E0071C441 /* List */,
+				48AD0E3B2020AA740071C441 /* Submit */,
+				48AD0E472020AC900071C441 /* BaseViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		48AD0E2B2020A9E90071C441 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				2CA6CD682836F8CA0A50C4F8 /* AweConfApi.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		48AD0E2C2020A9F10071C441 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				48AD0E492020ACF50071C441 /* Awesome.swift */,
+				48AD0E4C2020ACF50071C441 /* Conference.swift */,
+				48AD0E4A2020ACF50071C441 /* MemoryDb.swift */,
+				48AD0E4B2020ACF50071C441 /* Year.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		48AD0E392020AA5E0071C441 /* List */ = {
+			isa = PBXGroup;
+			children = (
+				48AD0E3C2020AAA80071C441 /* Cell */,
+				48AD0E312020AA2F0071C441 /* ConferenceListViewController.swift */,
+				48AD0E2D2020AA050071C441 /* ConferenceList.storyboard */,
+			);
+			path = List;
+			sourceTree = "<group>";
+		};
+		48AD0E3A2020AA690071C441 /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				48AD0E412020ABF40071C441 /* MapAnnotation */,
+				48AD0E2F2020AA140071C441 /* ConferenceDetail.storyboard */,
+				48AD0E332020AA3C0071C441 /* ConferenceDetailViewController.swift */,
+			);
+			path = Detail;
+			sourceTree = "<group>";
+		};
+		48AD0E3B2020AA740071C441 /* Submit */ = {
+			isa = PBXGroup;
+			children = (
+				48AD0E352020AA4C0071C441 /* ConferenceSubmitViewController.swift */,
+				48AD0E372020AA570071C441 /* ConferenceSubmit.storyboard */,
+			);
+			path = Submit;
+			sourceTree = "<group>";
+		};
+		48AD0E3C2020AAA80071C441 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				48AD0E3D2020AAC70071C441 /* ConferenceTableViewCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		48AD0E412020ABF40071C441 /* MapAnnotation */ = {
+			isa = PBXGroup;
+			children = (
+				48AD0E422020AC080071C441 /* AwesomeAnnotation.swift */,
+			);
+			path = MapAnnotation;
+			sourceTree = "<group>";
+		};
+		48AD0E442020AC250071C441 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				48AD0E452020AC340071C441 /* UIColor+Extension.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
 		CBB5F3457E863D9E6E8E6298 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
 				87DD1910A2C8A1FC7F00935A /* Pods-AweConf.debug.xcconfig */,
 				C371C60C1AA95F1C4344E675 /* Pods-AweConf.release.xcconfig */,
+				42DED8B4BFDF332299616620 /* Pods-AweConfPushNotification.debug.xcconfig */,
+				27998D3242F323DD45930626 /* Pods-AweConfPushNotification.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -144,9 +263,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 485A5675202088C500BECD56 /* Build configuration list for PBXNativeTarget "AweConfPushNotification" */;
 			buildPhases = (
+				C325666BE412D63736F78171 /* [CP] Check Pods Manifest.lock */,
 				485A5669202088C400BECD56 /* Sources */,
 				485A566A202088C400BECD56 /* Frameworks */,
 				485A566B202088C400BECD56 /* Resources */,
+				A0916F205676CA698A814C21 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -238,9 +359,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				48AD0E2E2020AA050071C441 /* ConferenceList.storyboard in Resources */,
 				4879DF092020760300CBDC14 /* LaunchScreen.storyboard in Resources */,
+				48AD0E382020AA570071C441 /* ConferenceSubmit.storyboard in Resources */,
 				4879DF062020760300CBDC14 /* Assets.xcassets in Resources */,
-				4879DF042020760300CBDC14 /* Main.storyboard in Resources */,
+				48AD0E302020AA140071C441 /* ConferenceDetail.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -269,6 +392,21 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AweConf/Pods-AweConf-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		A0916F205676CA698A814C21 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AweConfPushNotification/Pods-AweConfPushNotification-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		B525F287DE8ACDCB36CF0593 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -281,6 +419,24 @@
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 				"$(DERIVED_FILE_DIR)/Pods-AweConf-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C325666BE412D63736F78171 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-AweConfPushNotification-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -317,8 +473,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4879DF012020760300CBDC14 /* ViewController.swift in Sources */,
+				48AD0E4F2020ACF50071C441 /* Year.swift in Sources */,
+				48AD0E3E2020AAC70071C441 /* ConferenceTableViewCell.swift in Sources */,
+				48AD0E322020AA2F0071C441 /* ConferenceListViewController.swift in Sources */,
+				48AD0E502020ACF50071C441 /* Conference.swift in Sources */,
+				48AD0E342020AA3C0071C441 /* ConferenceDetailViewController.swift in Sources */,
+				48AD0E432020AC080071C441 /* AwesomeAnnotation.swift in Sources */,
+				48AD0E482020AC900071C441 /* BaseViewController.swift in Sources */,
+				48AD0E362020AA4C0071C441 /* ConferenceSubmitViewController.swift in Sources */,
+				48AD0E4D2020ACF50071C441 /* Awesome.swift in Sources */,
 				4879DEFF2020760300CBDC14 /* AppDelegate.swift in Sources */,
+				48AD0E4E2020ACF50071C441 /* MemoryDb.swift in Sources */,
+				48AD0E462020AC340071C441 /* UIColor+Extension.swift in Sources */,
+				2CA6C35FCA962D4098FDB8EF /* AweConfApi.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -333,14 +500,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		4879DF022020760300CBDC14 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				4879DF032020760300CBDC14 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		4879DF072020760300CBDC14 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -354,6 +513,7 @@
 /* Begin XCBuildConfiguration section */
 		485A5676202088C500BECD56 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 42DED8B4BFDF332299616620 /* Pods-AweConfPushNotification.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = F9FTQCB4H8;
@@ -369,6 +529,7 @@
 		};
 		485A5677202088C500BECD56 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 27998D3242F323DD45930626 /* Pods-AweConfPushNotification.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = F9FTQCB4H8;
