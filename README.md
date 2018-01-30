@@ -1,4 +1,4 @@
-# Awesome Mobile Conference / iOS app
+# Awesome Conference / iOS app
 
 [![](https://raw.githubusercontent.com/AwesomeMobileConferences/awesome-mobile-conferences/master/.github/Awesome%20Conference.png)](https://github.com/matteocrippa/awesome-mobile-conferences)
 
