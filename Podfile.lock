@@ -9,6 +9,7 @@ PODS:
     - Realm (= 3.1.0)
   - SwiftDate (4.5.1)
   - SwiftyJSON (4.0.0)
+  - SwipeMenuViewController (2.0.7)
 
 DEPENDENCIES:
   - Alamofire (~> 4.6.0)
@@ -17,6 +18,7 @@ DEPENDENCIES:
   - RealmSwift (~> 3.1.0)
   - SwiftDate (~> 4.5.1)
   - SwiftyJSON (~> 4.0.0)
+  - SwipeMenuViewController (~> 2.0.1)
 
 SPEC CHECKSUMS:
   Alamofire: f41a599bd63041760b26d393ec1069d9d7b917f4
@@ -26,7 +28,8 @@ SPEC CHECKSUMS:
   RealmSwift: e868fee9b10e5490ad94b6b6ecd9027944da1824
   SwiftDate: 7b56d42a221f582047287deb256b23fc5ed49a60
   SwiftyJSON: 070dabdcb1beb81b247c65ffa3a79dbbfb3b48aa
+  SwipeMenuViewController: fe912fbd0ae2cc1607b99084ca718cc7e60e50f9
 
-PODFILE CHECKSUM: 5cfef3bb357c6140d9ca98fe3d782ab16935e673
+PODFILE CHECKSUM: 768aa6474f93bacdeda899f0ca8ac3e810d65a6d
 
 COCOAPODS: 1.4.0

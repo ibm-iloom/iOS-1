@@ -11,12 +11,12 @@ enum AweConfApi: URLRequestConvertible {
     case categories()
     case submit(conference: Conference)
 
-    static let baseURLString = "https://aweconf.herokuapps.com"
+    static let baseURLString = "https://aweconf.herokuapp.com/api"
 
     var method: HTTPMethod {
         switch self {
             case .list:
-                return .post
+                return .get
             case .categories:
                 return .get
             case .submit:

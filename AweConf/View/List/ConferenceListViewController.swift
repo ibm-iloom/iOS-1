@@ -8,18 +8,34 @@
 
 import UIKit
 import Exteptional
+import Alamofire
+import SwiftyJSON
+import SwipeMenuViewController
 
 class ConferenceListViewController: BaseViewController {
     
     @IBOutlet weak var table: UITableView!
-    @IBOutlet weak var filterItems: UISegmentedControl!
-    
-    // type of the list
-    fileprivate enum listType {
-        case all
-        case favorite
+    @IBOutlet weak var swipeMenuView: SwipeMenuView! {
+        didSet {
+            swipeMenuView.delegate                          = self
+            swipeMenuView.dataSource                        = self
+            var options: SwipeMenuViewOptions               = .init()
+            options.tabView.style                           = .flexible
+            options.tabView.margin                          = 8.0
+            options.tabView.underlineView.backgroundColor   = UIColor.awesomeColor
+            options.tabView.backgroundColor                 = .white
+            options.tabView.underlineView.height            = 3.0
+            options.tabView.itemView.textColor              = UIColor.awesomeColor
+            options.tabView.itemView.selectedTextColor      = UIColor.awesomeColor
+            options.tabView.itemView.margin                 = 10.0
+            options.contentScrollView.backgroundColor       = UIColor.white
+            swipeMenuView.reloadData(options: options)
+        }
     }
     
+    fileprivate var currentCategory: Category? = nil
+    
+    fileprivate var lastUpdate = Date()
     fileprivate var conferences: [Conference]? {
         didSet {
             table.reloadData()
@@ -59,9 +75,6 @@ class ConferenceListViewController: BaseViewController {
         navigationItem.hidesSearchBarWhenScrolling = false
         navigationItem.hidesBackButton = false
         navigationItem.largeTitleDisplayMode = .always
-        
-        // set tint of selector
-        filterItems.tintColor = .awesomeColor
     }
     
     override func didReceiveMemoryWarning() {
@@ -83,8 +96,9 @@ class ConferenceListViewController: BaseViewController {
             let conference = getItem(index)
             else { return }
         
-        
+        // pass currently selected conference
         vc.conference = conference
+        // deselect row
         table.deselectRow(at: index, animated: true)
     }
     
@@ -93,60 +107,108 @@ class ConferenceListViewController: BaseViewController {
 // MARK: - Networking
 extension ConferenceListViewController {
     
-    fileprivate func parseJson(from data: Data) {
-        do {
-            let decoded = try JSONDecoder().decode(Awesome.self, from: data)
-            MemoryDb.shared.data = decoded
-            // get all results for root
-            conferences = getResults()
-            //print("👨‍💻 decoded:", decoded)
-        } catch (let error) {
-            print("🙅 \(error)")
+    fileprivate func getCategories(callback: @escaping (_ success: Bool) -> Void) {
+        Alamofire.request(AweConfApi.categories()).responseJSON { resp in
+            switch resp.result {
+            case .success(let data):
+                
+                let json = JSON(data)
+                
+                // loop categories
+                for category in json["categories"].arrayValue {
+                    let cat = Category(name: category.stringValue)
+                    try! self.realm.write {
+                        self.realm.add(cat, update: true)
+                    }
+                }
+                callback(true)
+                
+            case .failure(let error):
+                print("Request failed with error: \(error)")
+                callback(false)
+            }
+        }
+    }
+    
+    fileprivate func getConferences(callback: @escaping (_ success: Bool) -> Void) {
+        Alamofire.request(AweConfApi.list()).responseJSON { resp in
+            switch resp.result {
+            case .success(let data):
+                let json = JSON(data)
+                
+                // loop categories
+                for conference in json["conferences"].arrayValue {
+                    let conf = Conference(json: conference)
+                    try! self.realm.write {
+                        self.realm.add(conf, update: true)
+                    }
+                    
+                }
+                callback(true)
+                
+            case .failure(let error):
+                print("Request failed with error: \(error)")
+                callback(false)
+            }
         }
     }
     
     @objc fileprivate func getRemoteData() {
-        
         // start refreshing
         refreshControl.beginRefreshing()
         
         // show latest update
-        let lastUpdate = "⏱ last update: \(MemoryDb.shared.lastUpdate.toString(dateFormat: "dd/MM/yyyy @ HH:mm"))"
-        refreshControl.attributedTitle = NSAttributedString(string: lastUpdate)
+        let lastUpdateText = "⏱ last update: \(lastUpdate.toString(dateFormat: "dd/MM/yyyy @ HH:mm"))"
+        refreshControl.attributedTitle = NSAttributedString(string: lastUpdateText)
+        
+        // sync cats
+        getCategories { cats in
+            if cats {
+                self.swipeMenuView.reloadData()
+                
+                // sync conferences
+                self.getConferences(callback: { conf in
+                    
+                    // force refresh
+                    self.table.reloadData()
+                    
+                    // stop refreshing
+                    self.refreshControl.endRefreshing()
+                })
+            }
+        }
+        
+        conferences = getResults()
+        
+        // TODO: sync conferences
         
         // retrieve data from remote
-        if let data = AMCApi.getData() {
-            // parse json
-            parseJson(from: data)
-            
-            // populate headers
-            if let data = MemoryDb.shared.data {
-                // populate headers
-                let sorted = data.conferences.sorted { (conf1, conf2) -> Bool in
-                    guard let c1 = conf1.start, let c2 = conf2.start else { return false }
-                    return c1 < c2
-                    }.filter({ conference -> Bool in
-                        guard let date = conference.start else { return false }
-                        return date >= Date()
-                    })
-                
-                MemoryDb.shared.headers = sorted.reduce([]) { (curr, conf) -> [String] in
-                    var tmp = curr
-                    if(!curr.contains(conf.yearMonth)) {
-                        tmp.append(conf.yearMonth)
-                    }
-                    return tmp
-                }
-            } else {
-                MemoryDb.shared.headers = []
-            }
-            
-            // force refresh
-            table.reloadData()
-            
-            // stop refreshing
-            refreshControl.endRefreshing()
-        }
+        /*if let data = AMCApi.getData() {
+         // parse json
+         // populate headers
+         if let data = MemoryDb.shared.data {
+         // populate headers
+         let sorted = data.conferences.sorted { (conf1, conf2) -> Bool in
+         guard let c1 = conf1.start, let c2 = conf2.start else { return false }
+         return c1 < c2
+         }.filter({ conference -> Bool in
+         guard let date = conference.start else { return false }
+         return date >= Date()
+         })
+         
+         MemoryDb.shared.headers = sorted.reduce([]) { (curr, conf) -> [String] in
+         var tmp = curr
+         if(!curr.contains(conf.yearMonth)) {
+         tmp.append(conf.yearMonth)
+         }
+         return tmp
+         }
+         } else {
+         MemoryDb.shared.headers = []
+         }
+         
+         
+         }*/
         
     }
 }
@@ -154,17 +216,17 @@ extension ConferenceListViewController {
 // MARK: - Database (Memory)
 extension ConferenceListViewController {
     
-    func getResults() -> [Conference]? {
-        if let data = MemoryDb.shared.data {
-            // sort by start date
-            return data.conferences.sorted(by: {(a, b) -> Bool in
-                return a.start! < b.start!
-            }).filter({ conference -> Bool in
-                guard let date = conference.start else { return false }
-                return date >= Date()
+    func getResults() -> [Conference] {
+        var data = Array(self.realm.objects(Conference.self).sorted(byKeyPath: "startDate"))
+        
+        if let category = currentCategory {
+            data = data.filter({ conf -> Bool in
+                return conf.category.contains(category)
             })
         }
-        return nil
+        return data.filter { conf -> Bool in
+            return conf.startDate >= Date()
+        }
     }
     
 }
@@ -179,48 +241,23 @@ extension ConferenceListViewController: UISearchResultsUpdating {
             filteredConferences?.removeAll()
             
             // populate filtered results
-            filteredConferences = MemoryDb.shared.data?.conferences.filter({ conf -> Bool in
-                return conf.title.lowercased().contains(searchText.lowercased()) ||
-                    conf.address.lowercased().contains(searchText.lowercased())
-            })
+            /*filteredConferences = MemoryDb.shared.data?.conferences.filter({ conf -> Bool in
+             return conf.title.lowercased().contains(searchText.lowercased()) ||
+             conf.address.lowercased().contains(searchText.lowercased())
+             })*/
         }
         
-    }
-}
-
-// MARK: Actions
-extension ConferenceListViewController {
-    @IBAction func changeFilterItems(sender: UISegmentedControl) {
-        //print(sender.selectedSegmentIndex)
-        // reload table
-        table.reloadData()
     }
 }
 
 // MARK: - Data source
 extension ConferenceListViewController: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
-        return MemoryDb.shared.headers.count
-        //return MemoryDb.shared.data?.years.count ?? 0
+        return 1
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let yearMonth = MemoryDb.shared.headers[section]
-        
-        // is search active?
-        var items = isSearchActive ? filteredConferences : conferences
-        
-        // filter if favorite is on
-        if filterItems.selectedSegmentIndex == listType.favorite.hashValue {
-            items = items?.filter({ proj -> Bool in
-                return proj.isFavorite
-            })
-        }
-        
-        // return items
-        return items?.filter({ conf -> Bool in
-            return conf.yearMonth == yearMonth
-        }).count ?? 0
+        return conferences?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -236,7 +273,7 @@ extension ConferenceListViewController: UITableViewDataSource {
 // MARK: - Table delegate
 extension ConferenceListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return MemoryDb.shared.headers[section]
+        return ""
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -244,25 +281,51 @@ extension ConferenceListViewController: UITableViewDelegate {
     }
     
     func getItem(_ index: IndexPath) -> Conference? {
-        
-        let yearMonth = MemoryDb.shared.headers[index.section]
-        
-        // is search active?
-        var items = isSearchActive ? filteredConferences : conferences
-        
-        // filter if favorite is on
-        if filterItems.selectedSegmentIndex == listType.favorite.hashValue {
-            items = items?.filter({ proj -> Bool in
-                return proj.isFavorite
-            })
-        }
-        
-        // clean items
-        items = items?.filter({ conf -> Bool in
-            return conf.yearMonth == yearMonth
-        })
-        
-        return items?[index.row]
+        /*
+         let yearMonth = MemoryDb.shared.headers[index.section]
+         
+         // is search active?
+         var items = isSearchActive ? filteredConferences : conferences
+         
+         // filter if favorite is on
+         if filterItems.selectedSegmentIndex == listType.favorite.hashValue {
+         items = items?.filter({ proj -> Bool in
+         return proj.isFavorite
+         })
+         }
+         
+         // clean items
+         items = items?.filter({ conf -> Bool in
+         return conf.yearMonth == yearMonth
+         })
+         
+         return items?[index.row]*/
+        return self.conferences?[index.row]
     }
 }
 
+// MARK: - Swipable Menu Delegate
+extension ConferenceListViewController: SwipeMenuViewDelegate {
+    func swipeMenuView(_ swipeMenuView: SwipeMenuView, didChangeIndexFrom fromIndex: Int, to toIndex: Int) {
+        currentCategory = self.realm.objects(Category.self)[toIndex]
+        conferences = getResults()
+    }
+}
+
+// MARK: - Swipable Menu Data Source
+extension ConferenceListViewController: SwipeMenuViewDataSource {
+    func swipeMenuView(_ swipeMenuView: SwipeMenuView, viewControllerForPageAt index: Int) -> UIViewController {
+        return UIViewController()
+    }
+    
+    func numberOfPages(in swipeMenuView: SwipeMenuView) -> Int {
+        let items = self.realm.objects(Category.self).count
+        return items
+    }
+    
+    func swipeMenuView(_ swipeMenuView: SwipeMenuView, titleForPageAt index: Int) -> String {
+        let item = self.realm.objects(Category.self)[index].name
+        return item
+    }
+    
+}

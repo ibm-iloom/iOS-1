@@ -9,6 +9,7 @@ target 'AweConf' do
   pod 'OneSignal', '~> 2.6.2'
   pod 'RealmSwift', '~> 3.1.0'
   pod 'SwiftyJSON', '~> 4.0.0'
+  pod 'SwipeMenuViewController', '~> 2.0.1'
 end
 
 target 'AweConfPushNotification' do

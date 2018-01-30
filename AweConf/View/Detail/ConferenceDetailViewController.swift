@@ -94,9 +94,10 @@ extension ConferenceDetailViewController {
         cityLabel.text = conference.city
         
         // tweak view according topic content exists
-        if let topics = conference.topic {
+    
+        if conference.topic.count > 0 {
             topicField.isHidden = false
-            let content = topics.reduce("", { (result, topic) -> String in
+            let content = conference.topic.reduce("", { (result, topic) -> String in
                 return result + "\(topic),"
             })
             topicsLabel.text = String(content.dropLast())
