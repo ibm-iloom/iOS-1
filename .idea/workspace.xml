@@ -2,14 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7201e65b-3b30-44bb-bc9e-ab448f464301" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/AweConf/AweConf.entitlements" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/AweConfPushNotification/Info.plist" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/AweConfPushNotification/NotificationService.swift" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/AweConf.xcodeproj/project.pbxproj" afterPath="$PROJECT_DIR$/AweConf.xcodeproj/project.pbxproj" />
       <change beforePath="$PROJECT_DIR$/AweConf/AppDelegate.swift" afterPath="$PROJECT_DIR$/AweConf/AppDelegate.swift" />
-      <change beforePath="$PROJECT_DIR$/AweConf/Info.plist" afterPath="$PROJECT_DIR$/AweConf/Info.plist" />
-      <change beforePath="$PROJECT_DIR$/Podfile" afterPath="$PROJECT_DIR$/Podfile" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -34,9 +28,11 @@
       <file leaf-file-name="AppDelegate.swift" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/AweConf/AppDelegate.swift">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="485">
-              <caret line="62" column="1" lean-forward="false" selection-start-line="62" selection-start-column="1" selection-end-line="62" selection-end-column="1" />
-              <folding />
+            <state relative-caret-position="-415">
+              <caret line="9" column="16" lean-forward="false" selection-start-line="9" selection-start-column="16" selection-end-line="9" selection-end-column="16" />
+              <folding>
+                <element signature="e#145#157#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -147,12 +143,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1517309097697</updated>
-      <workItem from="1517309100865" duration="1141000" />
+      <workItem from="1517309100865" duration="1199000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1141000" />
+    <option name="totallyTimeSpent" value="1199000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="6" />
@@ -200,9 +196,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/AweConf/AppDelegate.swift">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="485">
-          <caret line="62" column="1" lean-forward="false" selection-start-line="62" selection-start-column="1" selection-end-line="62" selection-end-column="1" />
-          <folding />
+        <state relative-caret-position="-415">
+          <caret line="9" column="16" lean-forward="false" selection-start-line="9" selection-start-column="16" selection-end-line="9" selection-end-column="16" />
+          <folding>
+            <element signature="e#145#157#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
