@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		485A5670202088C500BECD56 /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 485A566F202088C500BECD56 /* NotificationService.swift */; };
+		485A5674202088C500BECD56 /* AweConfPushNotification.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 485A566D202088C400BECD56 /* AweConfPushNotification.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		4879DEFF2020760300CBDC14 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4879DEFE2020760300CBDC14 /* AppDelegate.swift */; };
 		4879DF012020760300CBDC14 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4879DF002020760300CBDC14 /* ViewController.swift */; };
 		4879DF042020760300CBDC14 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4879DF022020760300CBDC14 /* Main.storyboard */; };
@@ -15,7 +17,35 @@
 		86ED9B67447CC8C8DAD8F036 /* Pods_AweConf.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BFAA6F4BA9FE442EC25C2962 /* Pods_AweConf.framework */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		485A5672202088C500BECD56 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4879DEF32020760300CBDC14 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 485A566C202088C400BECD56;
+			remoteInfo = AweConfPushNotification;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		485A5678202088C500BECD56 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				485A5674202088C500BECD56 /* AweConfPushNotification.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		485A566D202088C400BECD56 /* AweConfPushNotification.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = AweConfPushNotification.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		485A566F202088C500BECD56 /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
+		485A5671202088C500BECD56 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		485A56792020899A00BECD56 /* AweConf.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = AweConf.entitlements; sourceTree = "<group>"; };
 		4879DEFB2020760300CBDC14 /* AweConf.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AweConf.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4879DEFE2020760300CBDC14 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4879DF002020760300CBDC14 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -29,6 +59,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		485A566A202088C400BECD56 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		4879DEF82020760300CBDC14 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -48,10 +85,20 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		485A566E202088C500BECD56 /* AweConfPushNotification */ = {
+			isa = PBXGroup;
+			children = (
+				485A566F202088C500BECD56 /* NotificationService.swift */,
+				485A5671202088C500BECD56 /* Info.plist */,
+			);
+			path = AweConfPushNotification;
+			sourceTree = "<group>";
+		};
 		4879DEF22020760300CBDC14 = {
 			isa = PBXGroup;
 			children = (
 				4879DEFD2020760300CBDC14 /* AweConf */,
+				485A566E202088C500BECD56 /* AweConfPushNotification */,
 				4879DEFC2020760300CBDC14 /* Products */,
 				CBB5F3457E863D9E6E8E6298 /* Pods */,
 				2F6D83B17D7B7518A918A19E /* Frameworks */,
@@ -62,6 +109,7 @@
 			isa = PBXGroup;
 			children = (
 				4879DEFB2020760300CBDC14 /* AweConf.app */,
+				485A566D202088C400BECD56 /* AweConfPushNotification.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -69,6 +117,7 @@
 		4879DEFD2020760300CBDC14 /* AweConf */ = {
 			isa = PBXGroup;
 			children = (
+				485A56792020899A00BECD56 /* AweConf.entitlements */,
 				4879DEFE2020760300CBDC14 /* AppDelegate.swift */,
 				4879DF002020760300CBDC14 /* ViewController.swift */,
 				4879DF022020760300CBDC14 /* Main.storyboard */,
@@ -91,6 +140,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		485A566C202088C400BECD56 /* AweConfPushNotification */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 485A5675202088C500BECD56 /* Build configuration list for PBXNativeTarget "AweConfPushNotification" */;
+			buildPhases = (
+				485A5669202088C400BECD56 /* Sources */,
+				485A566A202088C400BECD56 /* Frameworks */,
+				485A566B202088C400BECD56 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = AweConfPushNotification;
+			productName = AweConfPushNotification;
+			productReference = 485A566D202088C400BECD56 /* AweConfPushNotification.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		4879DEFA2020760300CBDC14 /* AweConf */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 4879DF0D2020760300CBDC14 /* Build configuration list for PBXNativeTarget "AweConf" */;
@@ -101,10 +167,12 @@
 				4879DEF92020760300CBDC14 /* Resources */,
 				714258D7FDB1A15E45453E9F /* [CP] Embed Pods Frameworks */,
 				E5856CDD89CE0F0ABFA6EC77 /* [CP] Copy Pods Resources */,
+				485A5678202088C500BECD56 /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				485A5673202088C500BECD56 /* PBXTargetDependency */,
 			);
 			name = AweConf;
 			productName = AweConf;
@@ -121,9 +189,21 @@
 				LastUpgradeCheck = 0920;
 				ORGANIZATIONNAME = "Matteo Crippa";
 				TargetAttributes = {
+					485A566C202088C400BECD56 = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+					};
 					4879DEFA2020760300CBDC14 = {
 						CreatedOnToolsVersion = 9.2;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -141,11 +221,19 @@
 			projectRoot = "";
 			targets = (
 				4879DEFA2020760300CBDC14 /* AweConf */,
+				485A566C202088C400BECD56 /* AweConfPushNotification */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		485A566B202088C400BECD56 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		4879DEF92020760300CBDC14 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -217,6 +305,14 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		485A5669202088C400BECD56 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				485A5670202088C500BECD56 /* NotificationService.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		4879DEF72020760300CBDC14 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -227,6 +323,14 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		485A5673202088C500BECD56 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 485A566C202088C400BECD56 /* AweConfPushNotification */;
+			targetProxy = 485A5672202088C500BECD56 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		4879DF022020760300CBDC14 /* Main.storyboard */ = {
@@ -248,6 +352,36 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		485A5676202088C500BECD56 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = F9FTQCB4H8;
+				INFOPLIST_FILE = AweConfPushNotification/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = boostco.de.amc.notification;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		485A5677202088C500BECD56 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = F9FTQCB4H8;
+				INFOPLIST_FILE = AweConfPushNotification/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = boostco.de.amc.notification;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		4879DF0B2020760300CBDC14 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -359,12 +493,14 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 87DD1910A2C8A1FC7F00935A /* Pods-AweConf.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = AweConf/AweConf.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = F9FTQCB4H8;
 				INFOPLIST_FILE = AweConf/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = boostco.de.AweConf;
+				PRODUCT_BUNDLE_IDENTIFIER = boostco.de.amc;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -375,12 +511,14 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = C371C60C1AA95F1C4344E675 /* Pods-AweConf.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = AweConf/AweConf.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = F9FTQCB4H8;
 				INFOPLIST_FILE = AweConf/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = boostco.de.AweConf;
+				PRODUCT_BUNDLE_IDENTIFIER = boostco.de.amc;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -390,6 +528,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		485A5675202088C500BECD56 /* Build configuration list for PBXNativeTarget "AweConfPushNotification" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				485A5676202088C500BECD56 /* Debug */,
+				485A5677202088C500BECD56 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		4879DEF62020760300CBDC14 /* Build configuration list for PBXProject "AweConf" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

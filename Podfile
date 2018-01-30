@@ -9,3 +9,6 @@ target 'AweConf' do
   pod 'OneSignal', '~> 2.6.2'
 end
 
+target 'AweConfPushNotification'
+  pod 'OneSignal', '~> 2.6.2'
+end
