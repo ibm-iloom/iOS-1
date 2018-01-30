@@ -7,5 +7,8 @@
 //
 
 import UIKit
+import RealmSwift
 
-class BaseViewController: UIViewController {}
+class BaseViewController: UIViewController {
+    let realm = try! Realm()
+}

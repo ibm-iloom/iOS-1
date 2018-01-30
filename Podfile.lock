@@ -2,20 +2,31 @@ PODS:
   - Alamofire (4.6.0)
   - Exteptional (0.2.6)
   - OneSignal (2.6.2)
+  - Realm (3.1.0):
+    - Realm/Headers (= 3.1.0)
+  - Realm/Headers (3.1.0)
+  - RealmSwift (3.1.0):
+    - Realm (= 3.1.0)
   - SwiftDate (4.5.1)
+  - SwiftyJSON (4.0.0)
 
 DEPENDENCIES:
   - Alamofire (~> 4.6.0)
   - Exteptional (~> 0.2.6)
   - OneSignal (~> 2.6.2)
+  - RealmSwift (~> 3.1.0)
   - SwiftDate (~> 4.5.1)
+  - SwiftyJSON (~> 4.0.0)
 
 SPEC CHECKSUMS:
   Alamofire: f41a599bd63041760b26d393ec1069d9d7b917f4
   Exteptional: b8aa08121998a6bf40a55fe9496b2b8ac192048c
   OneSignal: 95127bce89b9e495079e7205e3d47c88590b5750
+  Realm: 09513d7c054678d65cd02ce09871f805b0d758ac
+  RealmSwift: e868fee9b10e5490ad94b6b6ecd9027944da1824
   SwiftDate: 7b56d42a221f582047287deb256b23fc5ed49a60
+  SwiftyJSON: 070dabdcb1beb81b247c65ffa3a79dbbfb3b48aa
 
-PODFILE CHECKSUM: b2aa2a69f5960153195537e90a0d08a22b294d5f
+PODFILE CHECKSUM: 5cfef3bb357c6140d9ca98fe3d782ab16935e673
 
 COCOAPODS: 1.4.0

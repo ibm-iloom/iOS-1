@@ -7,6 +7,8 @@ target 'AweConf' do
   pod 'SwiftDate', '~> 4.5.1'
   pod 'Exteptional', '~> 0.2.6'
   pod 'OneSignal', '~> 2.6.2'
+  pod 'RealmSwift', '~> 3.1.0'
+  pod 'SwiftyJSON', '~> 4.0.0'
 end
 
 target 'AweConfPushNotification' do

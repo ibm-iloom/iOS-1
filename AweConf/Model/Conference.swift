@@ -7,63 +7,98 @@
 //
 
 import Foundation
+import RealmSwift
+import SwiftyJSON
 
-struct Conference: Codable {
-    let title: String
-    let year: Int
-    let startdate: String
-    let enddate: String
-    let city: String
-    let location: String
-    let homepage: String
-    let country: String
-    let emojiflag: String
-    let callforpaper: Bool
-    let isNew: Bool
-    let topics: [String]?
+class Conference: Object {
 
-    /// runtime value useful for sorting
-    var start: Date? {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy/MM/dd"
-        return dateFormatter.date(from: startdate)
-    }
-    var end: Date? {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy/MM/dd"
-        return dateFormatter.date(from: enddate)
-    }
-    
-    /// return current year/month
-    var yearMonth: String {
-        guard let start = start else { return "" }
-        return start.toString(dateFormat: "yyyy / MMMM").capitalized
+    @objc dynamic var id = ""
+    @objc dynamic var title = ""
+    @objc dynamic var year = 0
+    @objc dynamic var startDate = Date()
+    @objc dynamic var endDate = Date()
+    @objc dynamic var city = ""
+    @objc dynamic var country = ""
+    @objc dynamic var address = ""
+    @objc dynamic var homepage = ""
+    @objc dynamic var callForPaper = false
+    @objc dynamic var emojiFlag = ""
+    @objc dynamic var twitter = ""
+    @objc dynamic var approved = false
+    @objc dynamic var lat: Double = 0.0
+    @objc dynamic var lon: Double = 0.0
+    @objc dynamic var added = Date()
+    let topic = List<Topic>()
+    let category = List<Category>()
+
+    override static func primaryKey() -> String? {
+        return "id"
     }
 
-    /// Check if project is favorite locally (sync via iCloud)
+    var isNew: Bool {
+        get {
+            let lastUpdate = Date(timeIntervalSince1970: Double(UserDefaults.standard.float(forKey: "lastUpdate")))
+            return self.added > lastUpdate
+        }
+    }
+
     var isFavorite: Bool {
         get {
-            return UserDefaults.standard.bool(forKey: homepage)
+            return UserDefaults.standard.bool(forKey: "FAV/"+self.id)
         }
         set {
-            UserDefaults.standard.set(newValue, forKey: homepage)
+            UserDefaults.standard.set(newValue, forKey: "FAV/"+self.id)
             UserDefaults.standard.synchronize()
         }
     }
-
-    enum CodingKeys: String, CodingKey {
-        case title
-        case year
-        case startdate
-        case enddate
-        case homepage
-        case country
-        case callforpaper
-        case emojiflag
-        case topics
-        case city
-
-        case location = "where"
-        case isNew = "isnew"
+    
+    convenience required init(json: JSON) {
+        self.init()
+        mapping(json)
     }
+    
+    private func mapping(_ json: JSON) {
+        // date formatter
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+
+        // populate date
+        self.id = json.stringValue("_id")
+        self.title = json.stringValue("title")
+        self.year = json.intValue("year")
+        self.startDate = dateFormatter.date(from: json.stringValue("startdate")) ?? Date()
+        self.endDate = dateFormatter.date(from: json.stringValue("enddate")) ?? Date()
+        self.city = json.stringValue("city")
+        self.address = json.stringValue("where")
+        self.homepage = json.stringValue("homepage")
+        self.callForPaper = json.boolValue("callforpaper")
+        self.emojiFlag = json.stringValue("emojiflag")
+        self.twitter = json.stringValue("twitter")
+        self.approved = json.boolValue("approved")
+        self.lat = json.doubleValue("lat")
+        self.lon = json.doubleValue("lon")
+        self.added = dateFormatter.date(from: json.stringValue("added")) ?? Date()
+
+        // categories
+        for cat in json.getJSONArray("category") {
+            
+        }
+        /*for (cat in json.getJSONArray("category").arrayOfString()) {
+            Category().queryFirst { query -> query.equalTo("name", cat) }?.let {
+                self.category.add(it)
+            }
+        }*/
+
+        // topic
+        for topic in json.getJSONArray("topic") {
+            
+        }
+        /*for (topic in json.getJSONArray("topic").arrayOfString()) {
+            Topic().queryFirst { query -> query.equalTo("name", topic) }?.let {
+                self.topic.add(it)
+            }
+        }*/
+    }
+
 }
+

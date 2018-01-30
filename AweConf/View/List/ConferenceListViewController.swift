@@ -181,7 +181,7 @@ extension ConferenceListViewController: UISearchResultsUpdating {
             // populate filtered results
             filteredConferences = MemoryDb.shared.data?.conferences.filter({ conf -> Bool in
                 return conf.title.lowercased().contains(searchText.lowercased()) ||
-                    conf.location.lowercased().contains(searchText.lowercased())
+                    conf.address.lowercased().contains(searchText.lowercased())
             })
         }
         

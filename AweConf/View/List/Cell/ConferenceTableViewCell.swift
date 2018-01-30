@@ -29,13 +29,13 @@ class ConferenceTableViewCell: UITableViewCell {
 
     func setup(with conference: Conference) {
         self.conference = conference
-        conferenceFlag.text = conference.emojiflag
+        conferenceFlag.text = conference.emojiFlag
         conferenceTitle.text = conference.title
         
-        if conference.enddate != conference.startdate {
-            conferenceDate.text = (conference.start?.toString(dateFormat: "dd") ?? "") + " - " + (conference.end?.toString(dateFormat: "dd") ?? "")
+        if conference.endDate != conference.startDate {
+            conferenceDate.text = (conference.startDate.toString(dateFormat: "dd")) + " - " + (conference.endDate.toString(dateFormat: "dd"))
         } else {
-            conferenceDate.text = conference.start?.toString(dateFormat: "dd") ?? ""
+            conferenceDate.text = conference.startDate.toString(dateFormat: "dd")
         }
         conferenceFavorite.tintColor = .awesomeColor
         

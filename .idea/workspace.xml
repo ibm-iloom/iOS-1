@@ -2,9 +2,22 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7201e65b-3b30-44bb-bc9e-ab448f464301" name="Default" comment="">
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/dictionaries/matteocrippa.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/AweConf/Extension/JSON+Extension.swift" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/AweConf/View/List/ConferenceList.storyboard" afterPath="$PROJECT_DIR$/AweConf/View/List/ConferenceList.storyboard" />
+      <change beforePath="$PROJECT_DIR$/AweConf.xcodeproj/project.pbxproj" afterPath="$PROJECT_DIR$/AweConf.xcodeproj/project.pbxproj" />
+      <change beforePath="$PROJECT_DIR$/AweConf.xcodeproj/xcuserdata/matteocrippa.xcuserdatad/xcschemes/xcschememanagement.plist" afterPath="$PROJECT_DIR$/AweConf.xcodeproj/xcuserdata/matteocrippa.xcuserdatad/xcschemes/xcschememanagement.plist" />
+      <change beforePath="$PROJECT_DIR$/AweConf/AppDelegate.swift" afterPath="$PROJECT_DIR$/AweConf/AppDelegate.swift" />
+      <change beforePath="$PROJECT_DIR$/AweConf/Model/Awesome.swift" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/AweConf/Model/Conference.swift" afterPath="$PROJECT_DIR$/AweConf/Model/Conference.swift" />
+      <change beforePath="$PROJECT_DIR$/AweConf/Model/MemoryDb.swift" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/AweConf/Model/Year.swift" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/AweConf/Network/AweConfApi.swift" afterPath="$PROJECT_DIR$/AweConf/Network/AweConfApi.swift" />
+      <change beforePath="$PROJECT_DIR$/AweConf/View/Detail/ConferenceDetailViewController.swift" afterPath="$PROJECT_DIR$/AweConf/View/Detail/ConferenceDetailViewController.swift" />
+      <change beforePath="$PROJECT_DIR$/AweConf/View/List/Cell/ConferenceTableViewCell.swift" afterPath="$PROJECT_DIR$/AweConf/View/List/Cell/ConferenceTableViewCell.swift" />
       <change beforePath="$PROJECT_DIR$/AweConf/View/List/ConferenceListViewController.swift" afterPath="$PROJECT_DIR$/AweConf/View/List/ConferenceListViewController.swift" />
+      <change beforePath="$PROJECT_DIR$/Podfile" afterPath="$PROJECT_DIR$/Podfile" />
+      <change beforePath="$PROJECT_DIR$/Podfile.lock" afterPath="$PROJECT_DIR$/Podfile.lock" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -19,8 +32,8 @@
       <file leaf-file-name="Podfile" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Podfile">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="14" column="0" lean-forward="false" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
+            <state relative-caret-position="135">
+              <caret line="9" column="29" lean-forward="false" selection-start-line="9" selection-start-column="29" selection-end-line="9" selection-end-column="29" />
               <folding />
             </state>
           </provider>
@@ -29,8 +42,8 @@
       <file leaf-file-name="ConferenceTableViewCell.swift" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/AweConf/View/List/Cell/ConferenceTableViewCell.swift">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="135">
-              <caret line="9" column="18" lean-forward="false" selection-start-line="9" selection-start-column="18" selection-end-line="9" selection-end-column="18" />
+            <state relative-caret-position="418">
+              <caret line="35" column="140" lean-forward="false" selection-start-line="35" selection-start-column="140" selection-end-line="35" selection-end-column="140" />
               <folding>
                 <element signature="e#157#169#0" expanded="true" />
               </folding>
@@ -38,11 +51,33 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AweConfApi.swift" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/AweConf/Network/AweConfApi.swift">
+      <file leaf-file-name="ConferenceListViewController.swift" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/AweConf/View/List/ConferenceListViewController.swift">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="270">
-              <caret line="18" column="1" lean-forward="false" selection-start-line="18" selection-start-column="1" selection-end-line="18" selection-end-column="1" />
+            <state relative-caret-position="157">
+              <caret line="98" column="12" lean-forward="false" selection-start-line="98" selection-start-column="12" selection-end-line="98" selection-end-column="12" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Conference.swift" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/AweConf/Model/Conference.swift">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="246">
+              <caret line="67" column="33" lean-forward="false" selection-start-line="67" selection-start-column="33" selection-end-line="67" selection-end-column="33" />
+              <folding>
+                <element signature="e#143#160#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ConferenceDetailViewController.swift" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/AweConf/View/Detail/ConferenceDetailViewController.swift">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="81">
+              <caret line="137" column="38" lean-forward="false" selection-start-line="137" selection-start-column="38" selection-end-line="137" selection-end-column="38" />
               <folding />
             </state>
           </provider>
@@ -56,10 +91,15 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/AweConf/AppDelegate.swift" />
+        <option value="$PROJECT_DIR$/AweConf/Model/Category.swift" />
+        <option value="$PROJECT_DIR$/AweConf/Model/Topic.swift" />
         <option value="$PROJECT_DIR$/AweConf/Network/AweConfApi.swift" />
-        <option value="$PROJECT_DIR$/Podfile" />
+        <option value="$PROJECT_DIR$/AweConf/View/List/ConferenceListViewController.swift" />
         <option value="$PROJECT_DIR$/AweConf/View/List/Cell/ConferenceTableViewCell.swift" />
+        <option value="$PROJECT_DIR$/AweConf/Model/Conference.swift" />
+        <option value="$PROJECT_DIR$/AweConf/View/Detail/ConferenceDetailViewController.swift" />
+        <option value="$PROJECT_DIR$/Podfile" />
+        <option value="$PROJECT_DIR$/AweConf/AppDelegate.swift" />
       </list>
     </option>
   </component>
@@ -72,6 +112,9 @@
   <component name="ProjectFrameBounds">
     <option name="width" value="1440" />
     <option name="height" value="900" />
+  </component>
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="1" id="Add" />
   </component>
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1">
@@ -104,20 +147,13 @@
               <item name="" type="efc3779f:XcodeRootNode" />
               <item name="AweConf" type="1d218c8b:XcodeProjectNode" />
               <item name="AweConf" type="fcab9f18:XcodeViewNode" />
-              <item name="View" type="fcab9f18:XcodeViewNode" />
+              <item name="Model" type="fcab9f18:XcodeViewNode" />
             </path>
             <path>
               <item name="" type="efc3779f:XcodeRootNode" />
               <item name="AweConf" type="1d218c8b:XcodeProjectNode" />
               <item name="AweConf" type="fcab9f18:XcodeViewNode" />
-              <item name="View" type="fcab9f18:XcodeViewNode" />
-              <item name="Detail" type="fcab9f18:XcodeViewNode" />
-            </path>
-            <path>
-              <item name="" type="efc3779f:XcodeRootNode" />
-              <item name="AweConf" type="1d218c8b:XcodeProjectNode" />
-              <item name="AweConf" type="fcab9f18:XcodeViewNode" />
-              <item name="Assets.xcassets" type="fcab9f18:XcodeViewNode" />
+              <item name="Network" type="fcab9f18:XcodeViewNode" />
             </path>
             <path>
               <item name="" type="efc3779f:XcodeRootNode" />
@@ -132,7 +168,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="settings.editor.selected.configurable" value="CocoaPods" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
     <property name="OBJC.PRESERVED_TARGET_SELECTION" value="AweConf" />
   </component>
   <component name="RunDashboard">
@@ -147,23 +183,13 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.AweConf">
+  <component name="RunManager">
     <configuration name="AweConf" type="AppleRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="AweConf" TARGET_NAME="AweConf" CONFIG_NAME="Debug" SCHEME_NAME="AweConf" RUN_TARGET_PROJECT_NAME="AweConf" RUN_TARGET_NAME="AweConf" MAKE_ACTIVE="TRUE">
       <envs />
       <EXTENSION ID="org.jetbrains.appcode.reveal.RevealRunConfigurationExtension">
         <REVEAL_SETTINGS autoInject="false" autoInstall="true" askToEnableAutoInstall="true" />
       </EXTENSION>
     </configuration>
-    <configuration name="Pods-AweConfPushNotification" type="AppleRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Pods" TARGET_NAME="Pods-AweConfPushNotification" CONFIG_NAME="Debug" SCHEME_NAME="Pods-AweConfPushNotification" MAKE_ACTIVE="TRUE">
-      <envs />
-      <EXTENSION ID="org.jetbrains.appcode.reveal.RevealRunConfigurationExtension">
-        <REVEAL_SETTINGS autoInject="false" autoInstall="true" askToEnableAutoInstall="true" />
-      </EXTENSION>
-    </configuration>
-    <list size="2">
-      <item index="0" class="java.lang.String" itemvalue="Application.AweConf" />
-      <item index="1" class="java.lang.String" itemvalue="Application.Pods-AweConfPushNotification" />
-    </list>
   </component>
   <component name="ShelveChangesManager" show_recycled="false">
     <option name="remove_strategy" value="false" />
@@ -179,12 +205,12 @@
       <option name="presentableId" value="Default" />
       <updated>1517309097697</updated>
       <workItem from="1517309100865" duration="1487000" />
-      <workItem from="1517318195956" duration="759000" />
+      <workItem from="1517318195956" duration="4435000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="2246000" />
+    <option name="totallyTimeSpent" value="5922000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="6" />
@@ -229,36 +255,106 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/AweConf/AppDelegate.swift">
+    <entry file="file://$PROJECT_DIR$/AweConf/Model/Awesome.swift">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="395">
-          <caret line="63" column="1" lean-forward="true" selection-start-line="63" selection-start-column="1" selection-end-line="63" selection-end-column="1" />
+        <state relative-caret-position="165">
+          <caret line="11" column="0" lean-forward="false" selection-start-line="11" selection-start-column="0" selection-end-line="17" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/AweConf/Model/MemoryDb.swift">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Pods/Alamofire/Source/ParameterEncoding.swift">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="171">
+          <caret line="122" column="0" lean-forward="false" selection-start-line="122" selection-start-column="0" selection-end-line="123" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/AweConf/Model/Category.swift">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="12" column="0" lean-forward="false" selection-start-line="12" selection-start-column="0" selection-end-line="14" selection-end-column="5" />
           <folding>
-            <element signature="e#145#157#0" expanded="false" />
+            <element signature="e#108#125#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/AweConf/Model/Topic.swift">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="15" column="0" lean-forward="false" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
+          <folding>
+            <element signature="e#108#125#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/AweConf/Network/AweConfApi.swift">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="18" column="1" lean-forward="false" selection-start-line="18" selection-start-column="1" selection-end-line="18" selection-end-column="1" />
+        <state relative-caret-position="155">
+          <caret line="37" column="0" lean-forward="false" selection-start-line="37" selection-start-column="0" selection-end-line="37" selection-end-column="0" />
+          <folding>
+            <element signature="e#108#124#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/AweConf/View/List/ConferenceListViewController.swift">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="157">
+          <caret line="98" column="12" lean-forward="false" selection-start-line="98" selection-start-column="12" selection-end-line="98" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/AweConf/Model/Conference.swift">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="246">
+          <caret line="67" column="33" lean-forward="false" selection-start-line="67" selection-start-column="33" selection-end-line="67" selection-end-column="33" />
+          <folding>
+            <element signature="e#143#160#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/AweConf/View/Detail/ConferenceDetailViewController.swift">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="81">
+          <caret line="137" column="38" lean-forward="false" selection-start-line="137" selection-start-column="38" selection-end-line="137" selection-end-column="38" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Podfile">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="14" column="0" lean-forward="false" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
+        <state relative-caret-position="135">
+          <caret line="9" column="29" lean-forward="false" selection-start-line="9" selection-start-column="29" selection-end-line="9" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/AweConf/AppDelegate.swift">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="358">
+          <caret line="33" column="65" lean-forward="false" selection-start-line="33" selection-start-column="65" selection-end-line="33" selection-end-column="65" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/AweConf/View/List/Cell/ConferenceTableViewCell.swift">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="9" column="18" lean-forward="false" selection-start-line="9" selection-start-column="18" selection-end-line="9" selection-end-column="18" />
+        <state relative-caret-position="418">
+          <caret line="35" column="140" lean-forward="false" selection-start-line="35" selection-start-column="140" selection-end-line="35" selection-end-column="140" />
           <folding>
             <element signature="e#157#169#0" expanded="true" />
           </folding>

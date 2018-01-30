@@ -88,13 +88,13 @@ extension ConferenceDetailViewController {
         
         // set labels
         titleLabel.text = conference.title
-        startDateLabel.text = conference.startdate
-        endDateLabel.text = conference.enddate
+        startDateLabel.text = conference.startDate.toString(dateFormat: "dd")
+        endDateLabel.text = conference.endDate.toString(dateFormat: "dd")
         countryLabel.text = conference.country
         cityLabel.text = conference.city
         
         // tweak view according topic content exists
-        if let topics = conference.topics {
+        if let topics = conference.topic {
             topicField.isHidden = false
             let content = topics.reduce("", { (result, topic) -> String in
                 return result + "\(topic),"
@@ -118,7 +118,7 @@ extension ConferenceDetailViewController {
     
     fileprivate func populateMap() {
         guard let conference = conference else { return }
-        getLocationFrom(address: conference.location)
+        getLocationFrom(address: conference.address)
     }
 }
 
@@ -141,7 +141,7 @@ extension ConferenceDetailViewController {
     @objc func openMap(_ sender: UITapGestureRecognizer) {
         guard
             let conference = conference,
-            let encodedAddress = conference.location.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed),
+            let encodedAddress = conference.address.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed),
             let url = URL(string: "http://maps.apple.com/maps?saddr=\(encodedAddress)")
             else { return }
         UIApplication.shared.open(url)
