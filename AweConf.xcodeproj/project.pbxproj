@@ -12,6 +12,7 @@
 		4879DF042020760300CBDC14 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4879DF022020760300CBDC14 /* Main.storyboard */; };
 		4879DF062020760300CBDC14 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4879DF052020760300CBDC14 /* Assets.xcassets */; };
 		4879DF092020760300CBDC14 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4879DF072020760300CBDC14 /* LaunchScreen.storyboard */; };
+		86ED9B67447CC8C8DAD8F036 /* Pods_AweConf.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BFAA6F4BA9FE442EC25C2962 /* Pods_AweConf.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,9 @@
 		4879DF052020760300CBDC14 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4879DF082020760300CBDC14 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4879DF0A2020760300CBDC14 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		87DD1910A2C8A1FC7F00935A /* Pods-AweConf.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AweConf.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AweConf/Pods-AweConf.debug.xcconfig"; sourceTree = "<group>"; };
+		BFAA6F4BA9FE442EC25C2962 /* Pods_AweConf.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AweConf.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C371C60C1AA95F1C4344E675 /* Pods-AweConf.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AweConf.release.xcconfig"; path = "Pods/Target Support Files/Pods-AweConf/Pods-AweConf.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,17 +33,28 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				86ED9B67447CC8C8DAD8F036 /* Pods_AweConf.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2F6D83B17D7B7518A918A19E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				BFAA6F4BA9FE442EC25C2962 /* Pods_AweConf.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		4879DEF22020760300CBDC14 = {
 			isa = PBXGroup;
 			children = (
 				4879DEFD2020760300CBDC14 /* AweConf */,
 				4879DEFC2020760300CBDC14 /* Products */,
+				CBB5F3457E863D9E6E8E6298 /* Pods */,
+				2F6D83B17D7B7518A918A19E /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -64,6 +79,15 @@
 			path = AweConf;
 			sourceTree = "<group>";
 		};
+		CBB5F3457E863D9E6E8E6298 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				87DD1910A2C8A1FC7F00935A /* Pods-AweConf.debug.xcconfig */,
+				C371C60C1AA95F1C4344E675 /* Pods-AweConf.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -71,9 +95,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 4879DF0D2020760300CBDC14 /* Build configuration list for PBXNativeTarget "AweConf" */;
 			buildPhases = (
+				B525F287DE8ACDCB36CF0593 /* [CP] Check Pods Manifest.lock */,
 				4879DEF72020760300CBDC14 /* Sources */,
 				4879DEF82020760300CBDC14 /* Frameworks */,
 				4879DEF92020760300CBDC14 /* Resources */,
+				714258D7FDB1A15E45453E9F /* [CP] Embed Pods Frameworks */,
+				E5856CDD89CE0F0ABFA6EC77 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -130,6 +157,64 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		714258D7FDB1A15E45453E9F /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-AweConf/Pods-AweConf-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/Exteptional/Exteptional.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftDate/SwiftDate.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Exteptional.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftDate.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AweConf/Pods-AweConf-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B525F287DE8ACDCB36CF0593 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-AweConf-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E5856CDD89CE0F0ABFA6EC77 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AweConf/Pods-AweConf-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		4879DEF72020760300CBDC14 /* Sources */ = {
@@ -272,6 +357,7 @@
 		};
 		4879DF0E2020760300CBDC14 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 87DD1910A2C8A1FC7F00935A /* Pods-AweConf.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -287,6 +373,7 @@
 		};
 		4879DF0F2020760300CBDC14 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C371C60C1AA95F1C4344E675 /* Pods-AweConf.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;

@@ -1,0 +1,21 @@
+PODS:
+  - Alamofire (4.6.0)
+  - Exteptional (0.2.6)
+  - OneSignal (2.6.2)
+  - SwiftDate (4.5.1)
+
+DEPENDENCIES:
+  - Alamofire (~> 4.6.0)
+  - Exteptional (~> 0.2.6)
+  - OneSignal (~> 2.6.2)
+  - SwiftDate (~> 4.5.1)
+
+SPEC CHECKSUMS:
+  Alamofire: f41a599bd63041760b26d393ec1069d9d7b917f4
+  Exteptional: b8aa08121998a6bf40a55fe9496b2b8ac192048c
+  OneSignal: 95127bce89b9e495079e7205e3d47c88590b5750
+  SwiftDate: 7b56d42a221f582047287deb256b23fc5ed49a60
+
+PODFILE CHECKSUM: e6f380243be48dc1ec8bf0fcc67e7d7937456738
+
+COCOAPODS: 1.4.0
