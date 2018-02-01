@@ -51,12 +51,12 @@ class Conference: Object {
             UserDefaults.standard.synchronize()
         }
     }
-    
+
     convenience required init(json: JSON) {
         self.init()
         mapping(json)
     }
-    
+
     private func mapping(_ json: JSON) {
         // date formatter
         let dateFormatter = DateFormatter()
@@ -66,8 +66,14 @@ class Conference: Object {
         self.id = json.stringValue("_id")
         self.title = json.stringValue("title")
         self.year = json.intValue("year")
-        self.startDate = dateFormatter.date(from: json.stringValue("startdate")) ?? Date()
-        self.endDate = dateFormatter.date(from: json.stringValue("enddate")) ?? Date()
+        let startDateString = json.stringValue("startdate")
+        let startIndexEnd = startDateString.index(startDateString.startIndex, offsetBy: 10)
+        self.startDate = dateFormatter.date(from: startDateString.substring(to: startIndexEnd)) ?? Date()
+        
+        let endDateString = json.stringValue("enddate")
+        let endIndexEnd = endDateString.index(endDateString.startIndex, offsetBy: 10)
+        self.endDate = dateFormatter.date(from: endDateString.substring(to: startIndexEnd)) ?? Date()
+        
         self.city = json.stringValue("city")
         self.address = json.stringValue("where")
         self.homepage = json.stringValue("homepage")
@@ -81,7 +87,7 @@ class Conference: Object {
 
         // categories
         for cat in json.getJSONArray("category") {
-            
+
         }
         /*for (cat in json.getJSONArray("category").arrayOfString()) {
             Category().queryFirst { query -> query.equalTo("name", cat) }?.let {
@@ -91,7 +97,7 @@ class Conference: Object {
 
         // topic
         for topic in json.getJSONArray("topic") {
-            
+
         }
         /*for (topic in json.getJSONArray("topic").arrayOfString()) {
             Topic().queryFirst { query -> query.equalTo("name", topic) }?.let {
@@ -101,4 +107,3 @@ class Conference: Object {
     }
 
 }
-
