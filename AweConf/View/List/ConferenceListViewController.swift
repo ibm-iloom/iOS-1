@@ -46,6 +46,11 @@ class ConferenceListViewController: BaseViewController {
             table.reloadData()
         }
     }
+    fileprivate var categories: [Category]? {
+        didSet {
+            swipeMenuView.reloadData()
+        }
+    }
     fileprivate let searchController = UISearchController(searchResultsController: nil)
     fileprivate lazy var refreshControl: UIRefreshControl = {
         let refreshControl = UIRefreshControl()
@@ -164,7 +169,8 @@ extension ConferenceListViewController {
         // sync cats
         getCategories { cats in
             if cats {
-                self.swipeMenuView.reloadData()
+                //
+                self.categories = Array(self.realm.objects(Category.self).sorted(byKeyPath: "name"))
                 
                 // sync conferences
                 self.getConferences(callback: { conf in
@@ -319,13 +325,11 @@ extension ConferenceListViewController: SwipeMenuViewDataSource {
     }
     
     func numberOfPages(in swipeMenuView: SwipeMenuView) -> Int {
-        let items = self.realm.objects(Category.self).count
-        return items
+        return categories?.count ?? 0
     }
     
     func swipeMenuView(_ swipeMenuView: SwipeMenuView, titleForPageAt index: Int) -> String {
-        let item = self.realm.objects(Category.self)[index].name
-        return item
+        return categories?[index].name ?? ""
     }
     
 }
