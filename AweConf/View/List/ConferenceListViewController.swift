@@ -13,7 +13,7 @@ import SwiftyJSON
 import SwipeMenuViewController
 
 class ConferenceListViewController: BaseViewController {
-    
+
     @IBOutlet weak var table: UITableView!
     @IBOutlet weak var swipeMenuView: SwipeMenuView! {
         didSet {
@@ -32,9 +32,23 @@ class ConferenceListViewController: BaseViewController {
             swipeMenuView.reloadData(options: options)
         }
     }
-    
-    fileprivate var currentCategory: Category? = nil
-    
+
+    fileprivate var currentCategory: Category? = nil {
+        didSet {
+            var data = Array(self.realm.objects(Conference.self).sorted(byKeyPath: "startDate"))
+
+            if let category = currentCategory {
+                data = data.filter({ conf -> Bool in
+                    return conf.category.contains(category)
+                })
+            }
+            
+            conferences = data.filter { conf -> Bool in
+                return conf.startDate >= Date()
+            }
+        }
+    }
+
     fileprivate var lastUpdate = Date()
     fileprivate var conferences: [Conference]? {
         didSet {
@@ -61,10 +75,10 @@ class ConferenceListViewController: BaseViewController {
     fileprivate var isSearchActive: Bool {
         return (searchController.isActive && searchController.searchBar.text != "")
     }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         // set searchController
         searchController.searchResultsUpdater = self
         searchController.searchBar.placeholder = "Filter"
@@ -72,53 +86,53 @@ class ConferenceListViewController: BaseViewController {
         searchController.dimsBackgroundDuringPresentation = false
         searchController.hidesNavigationBarDuringPresentation = false
         definesPresentationContext = true
-        
+
         title = "Conferences"
-        
+
         // set extra stuff for navigation bar
         navigationItem.searchController = searchController
         navigationItem.hidesSearchBarWhenScrolling = false
         navigationItem.hidesBackButton = false
         navigationItem.largeTitleDisplayMode = .always
     }
-    
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-    
+
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         getRemoteData()
-        
+
         // add refresh control
         table.refreshControl = refreshControl
     }
-    
+
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard
             let vc = segue.destination as? ConferenceDetailViewController,
             let index = table.indexPathForSelectedRow,
             let conference = getItem(index)
             else { return }
-        
+
         // pass currently selected conference
         vc.conference = conference
         // deselect row
         table.deselectRow(at: index, animated: true)
     }
-    
+
 }
 
 // MARK: - Networking
 extension ConferenceListViewController {
-    
+
     fileprivate func getCategories(callback: @escaping (_ success: Bool) -> Void) {
         Alamofire.request(AweConfApi.categories()).responseJSON { resp in
             switch resp.result {
             case .success(let data):
-                
+
                 let json = JSON(data)
-                
+
                 // loop categories
                 for category in json["categories"].arrayValue {
                     let cat = Category(name: category.stringValue)
@@ -127,67 +141,78 @@ extension ConferenceListViewController {
                     }
                 }
                 callback(true)
-                
+
             case .failure(let error):
                 print("Request failed with error: \(error)")
                 callback(false)
             }
         }
     }
-    
+
     fileprivate func getConferences(callback: @escaping (_ success: Bool) -> Void) {
         Alamofire.request(AweConfApi.list()).responseJSON { resp in
             switch resp.result {
             case .success(let data):
                 let json = JSON(data)
-                
+
                 // loop categories
                 for conference in json["conferences"].arrayValue {
                     let conf = Conference(json: conference)
                     try! self.realm.write {
                         self.realm.add(conf, update: true)
                     }
-                    
+
                 }
                 callback(true)
-                
+
             case .failure(let error):
                 print("Request failed with error: \(error)")
                 callback(false)
             }
         }
     }
-    
+
     @objc fileprivate func getRemoteData() {
         // start refreshing
         refreshControl.beginRefreshing()
-        
+
         // show latest update
         let lastUpdateText = "⏱ last update: \(lastUpdate.toString(dateFormat: "dd/MM/yyyy @ HH:mm"))"
         refreshControl.attributedTitle = NSAttributedString(string: lastUpdateText)
-        
+
         // sync cats
         getCategories { cats in
             if cats {
-                //
+                // check categories
                 self.categories = Array(self.realm.objects(Category.self).sorted(byKeyPath: "name"))
-                
+
                 // sync conferences
                 self.getConferences(callback: { conf in
                     
+                    // manage current
+                    if let current = self.currentCategory {
+                        self.currentCategory = nil
+                        self.currentCategory = current
+                        // get index of current cat
+                        let index = self.categories?.index(of: current)
+                        // move to index
+                        self.swipeMenuView.jump(to: index ?? 0, animated: false)
+                        
+                    } else {
+                        self.currentCategory = self.categories?[0]
+                    }
+
                     // force refresh
                     self.table.reloadData()
-                    
+
                     // stop refreshing
                     self.refreshControl.endRefreshing()
                 })
             }
         }
-        
-        conferences = getResults()
-        
+
         // TODO: sync conferences
-        
+
         // retrieve data from remote
         /*if let data = AMCApi.getData() {
          // parse json
@@ -215,44 +240,31 @@ extension ConferenceListViewController {
          
          
          }*/
-        
+
     }
 }
 
 // MARK: - Database (Memory)
 extension ConferenceListViewController {
-    
-    func getResults() -> [Conference] {
-        var data = Array(self.realm.objects(Conference.self).sorted(byKeyPath: "startDate"))
-        
-        if let category = currentCategory {
-            data = data.filter({ conf -> Bool in
-                return conf.category.contains(category)
-            })
-        }
-        return data.filter { conf -> Bool in
-            return conf.startDate >= Date()
-        }
-    }
-    
+
 }
 
 // MARK: - UISearchBar Delegate
 extension ConferenceListViewController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
-        
+
         // check if search is active
         if let searchText = searchController.searchBar.text, !searchText.isEmpty {
             // force clear the results first
             filteredConferences?.removeAll()
-            
+
             // populate filtered results
             /*filteredConferences = MemoryDb.shared.data?.conferences.filter({ conf -> Bool in
              return conf.title.lowercased().contains(searchText.lowercased()) ||
              conf.address.lowercased().contains(searchText.lowercased())
              })*/
         }
-        
+
     }
 }
 
@@ -261,11 +273,11 @@ extension ConferenceListViewController: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
-    
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return conferences?.count ?? 0
     }
-    
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "conferenceCell") as! ConferenceTableViewCell
         guard
@@ -281,11 +293,11 @@ extension ConferenceListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return ""
     }
-    
+
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         performSegue(withIdentifier: "showDetail", sender: self)
     }
-    
+
     func getItem(_ index: IndexPath) -> Conference? {
         /*
          let yearMonth = MemoryDb.shared.headers[index.section]
@@ -313,8 +325,10 @@ extension ConferenceListViewController: UITableViewDelegate {
 // MARK: - Swipable Menu Delegate
 extension ConferenceListViewController: SwipeMenuViewDelegate {
     func swipeMenuView(_ swipeMenuView: SwipeMenuView, didChangeIndexFrom fromIndex: Int, to toIndex: Int) {
-        currentCategory = self.realm.objects(Category.self)[toIndex]
-        conferences = getResults()
+        if let categories = categories {
+            // set current category
+            currentCategory = categories[toIndex]
+        }
     }
 }
 
@@ -323,13 +337,13 @@ extension ConferenceListViewController: SwipeMenuViewDataSource {
     func swipeMenuView(_ swipeMenuView: SwipeMenuView, viewControllerForPageAt index: Int) -> UIViewController {
         return UIViewController()
     }
-    
+
     func numberOfPages(in swipeMenuView: SwipeMenuView) -> Int {
         return categories?.count ?? 0
     }
-    
+
     func swipeMenuView(_ swipeMenuView: SwipeMenuView, titleForPageAt index: Int) -> String {
         return categories?[index].name ?? ""
     }
-    
+
 }

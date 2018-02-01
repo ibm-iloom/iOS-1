@@ -11,7 +11,7 @@ import RealmSwift
 import SwiftyJSON
 
 class Conference: Object {
-
+    
     @objc dynamic var id = ""
     @objc dynamic var title = ""
     @objc dynamic var year = 0
@@ -30,18 +30,18 @@ class Conference: Object {
     @objc dynamic var added = Date()
     let topic = List<Topic>()
     let category = List<Category>()
-
+    
     override static func primaryKey() -> String? {
         return "id"
     }
-
+    
     var isNew: Bool {
         get {
             let lastUpdate = Date(timeIntervalSince1970: Double(UserDefaults.standard.float(forKey: "lastUpdate")))
             return self.added > lastUpdate
         }
     }
-
+    
     var isFavorite: Bool {
         get {
             return UserDefaults.standard.bool(forKey: "FAV/"+self.id)
@@ -51,17 +51,17 @@ class Conference: Object {
             UserDefaults.standard.synchronize()
         }
     }
-
+    
     convenience required init(json: JSON) {
         self.init()
         mapping(json)
     }
-
+    
     private func mapping(_ json: JSON) {
         // date formatter
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd"
-
+        
         // populate date
         self.id = json.stringValue("_id")
         self.title = json.stringValue("title")
@@ -84,26 +84,32 @@ class Conference: Object {
         self.lat = json.doubleValue("lat")
         self.lon = json.doubleValue("lon")
         self.added = dateFormatter.date(from: json.stringValue("added")) ?? Date()
-
+        
+        // realm
+        let realm = try! Realm()
+        
         // categories
-        for cat in json.getJSONArray("category") {
-
-        }
-        /*for (cat in json.getJSONArray("category").arrayOfString()) {
-            Category().queryFirst { query -> query.equalTo("name", cat) }?.let {
-                self.category.add(it)
+        for cat in json["category"].arrayValue {
+            
+            // find item
+            if let catItem = realm.objects(Category.self).filter({ category -> Bool in
+                return category.name == cat.stringValue
+            }).first {
+                // add to list
+                self.category.append(catItem)
             }
-        }*/
-
+            
+        }
+        
         // topic
         for topic in json.getJSONArray("topic") {
-
+            
         }
         /*for (topic in json.getJSONArray("topic").arrayOfString()) {
-            Topic().queryFirst { query -> query.equalTo("name", topic) }?.let {
-                self.topic.add(it)
-            }
-        }*/
+         Topic().queryFirst { query -> query.equalTo("name", topic) }?.let {
+         self.topic.add(it)
+         }
+         }*/
     }
-
+    
 }
