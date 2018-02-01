@@ -61,7 +61,7 @@ class ConferenceListViewController: BaseViewController {
         }
     }
     fileprivate var categories: [Category]? {
-        didSet {            
+        didSet {
             // contains current category index
             var index = 0
             
@@ -252,11 +252,6 @@ extension ConferenceListViewController {
     }
 }
 
-// MARK: - Database (Memory)
-extension ConferenceListViewController {
-
-}
-
 // MARK: - UISearchBar Delegate
 extension ConferenceListViewController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
@@ -267,10 +262,10 @@ extension ConferenceListViewController: UISearchResultsUpdating {
             filteredConferences?.removeAll()
 
             // populate filtered results
-            /*filteredConferences = MemoryDb.shared.data?.conferences.filter({ conf -> Bool in
-             return conf.title.lowercased().contains(searchText.lowercased()) ||
-             conf.address.lowercased().contains(searchText.lowercased())
-             })*/
+            filteredConferences = conferences?.filter({ conf -> Bool in
+                return conf.title.lowercased().contains(searchText.lowercased()) ||
+                    conf.address.lowercased().contains(searchText.lowercased())
+            })
         }
 
     }

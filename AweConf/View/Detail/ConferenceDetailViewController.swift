@@ -88,8 +88,8 @@ extension ConferenceDetailViewController {
 
         // set labels
         titleLabel.text = conference.title
-        startDateLabel.text = conference.startDate.toString(dateFormat: "dd")
-        endDateLabel.text = conference.endDate.toString(dateFormat: "dd")
+        startDateLabel.text = conference.startDate.toString(dateFormat: "dd-MM-yyyy")
+        endDateLabel.text = conference.endDate.toString(dateFormat: "dd-MM-yyyy")
         countryLabel.text = conference.country
         cityLabel.text = conference.city
 
