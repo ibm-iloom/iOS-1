@@ -61,8 +61,20 @@ class ConferenceListViewController: BaseViewController {
         }
     }
     fileprivate var categories: [Category]? {
-        didSet {
-            swipeMenuView.reloadData()
+        didSet {            
+            // contains current category index
+            var index = 0
+            
+            // get index of current category
+            if let category = currentCategory {
+                // get index of current cat
+                index = self.categories?.index(of: category) ?? 0
+            }
+            
+            // move to index
+            swipeMenuView.jump(to: index, animated: false)
+            swipeMenuView.reloadData(default: index)
+
         }
     }
     fileprivate let searchController = UISearchController(searchResultsController: nil)
@@ -193,10 +205,6 @@ extension ConferenceListViewController {
                     if let current = self.currentCategory {
                         self.currentCategory = nil
                         self.currentCategory = current
-                        // get index of current cat
-                        let index = self.categories?.index(of: current)
-                        // move to index
-                        self.swipeMenuView.jump(to: index ?? 0, animated: false)
                         
                     } else {
                         self.currentCategory = self.categories?[0]
