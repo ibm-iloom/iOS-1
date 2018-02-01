@@ -77,6 +77,7 @@ class Conference: Object {
         self.city = json.stringValue("city")
         self.address = json.stringValue("where")
         self.homepage = json.stringValue("homepage")
+        self.country = json.stringValue("country")
         self.callForPaper = json.boolValue("callforpaper")
         self.emojiFlag = json.stringValue("emojiflag")
         self.twitter = json.stringValue("twitter")
