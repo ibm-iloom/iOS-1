@@ -278,7 +278,8 @@ extension ConferenceListViewController: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return conferences?.count ?? 0
+        var items = isSearchActive ? filteredConferences : conferences
+        return items?.count ?? 0
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -302,26 +303,10 @@ extension ConferenceListViewController: UITableViewDelegate {
     }
 
     func getItem(_ index: IndexPath) -> Conference? {
-        /*
-         let yearMonth = MemoryDb.shared.headers[index.section]
-         
          // is search active?
          var items = isSearchActive ? filteredConferences : conferences
-         
-         // filter if favorite is on
-         if filterItems.selectedSegmentIndex == listType.favorite.hashValue {
-         items = items?.filter({ proj -> Bool in
-         return proj.isFavorite
-         })
-         }
-         
-         // clean items
-         items = items?.filter({ conf -> Bool in
-         return conf.yearMonth == yearMonth
-         })
-         
-         return items?[index.row]*/
-        return self.conferences?[index.row]
+        
+         return items?[index.row]
     }
 }
 
