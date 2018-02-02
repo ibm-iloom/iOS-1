@@ -53,9 +53,7 @@ class Conference: Object {
     }
     
     var yearMonth: String {
-        get {
-            return startDate.toString(dateFormat: "YYYY MMMM")
-        }
+        return self.startDate.toString(dateFormat: "YYYY MMMM")
     }
     
     convenience required init(json: JSON) {

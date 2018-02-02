@@ -35,6 +35,7 @@ class ConferenceListViewController: BaseViewController {
 
     fileprivate var currentCategory: Category? = nil {
         didSet {
+                    
             var data = Array(self.realm.objects(Conference.self).sorted(byKeyPath: "startDate"))
 
             if let category = currentCategory {
@@ -52,11 +53,28 @@ class ConferenceListViewController: BaseViewController {
     fileprivate var lastUpdate = Date()
     fileprivate var conferences: [Conference]? {
         didSet {
+            headers = conferences?.reduce([], { (curr, conf) -> [String] in
+                var tmp = curr
+                if(!curr.contains(conf.yearMonth)) {
+                    tmp.append(conf.yearMonth)
+                }
+                return tmp
+            })
+            
             table.reloadData()
         }
     }
     fileprivate var filteredConferences: [Conference]? {
         didSet {
+            
+            headers = conferences?.reduce([], { (curr, conf) -> [String] in
+                var tmp = curr
+                if(!curr.contains(conf.yearMonth)) {
+                    tmp.append(conf.yearMonth)
+                }
+                return tmp
+            })
+            
             table.reloadData()
         }
     }
@@ -87,8 +105,8 @@ class ConferenceListViewController: BaseViewController {
     fileprivate var isSearchActive: Bool {
         return (searchController.isActive && searchController.searchBar.text != "")
     }
-    fileprivate var monthHeaders = [String]()
-
+    fileprivate var headers: [String]? = nil
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -202,8 +220,6 @@ extension ConferenceListViewController {
                 // sync conferences
                 self.getConferences(callback: { conf in
                     
-                    // generate month headers
-                    
                     // manage current
                     if let current = self.currentCategory {
                         self.currentCategory = nil
@@ -252,11 +268,6 @@ extension ConferenceListViewController {
          }*/
 
     }
-    
-    fileprivate func generateHeaders() {
-        // clean up all
-        monthHeaders.removeAll()
-    }
 }
 
 // MARK: - UISearchBar Delegate
@@ -281,7 +292,7 @@ extension ConferenceListViewController: UISearchResultsUpdating {
 // MARK: - Data source
 extension ConferenceListViewController: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        return headers?.count ?? 0
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -302,7 +313,7 @@ extension ConferenceListViewController: UITableViewDataSource {
 // MARK: - Table delegate
 extension ConferenceListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return ""
+        return headers?[section] ?? ""
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
