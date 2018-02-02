@@ -236,37 +236,6 @@ extension ConferenceListViewController {
                 })
             }
         }
-
-        // TODO: sync conferences
-
-        // retrieve data from remote
-        /*if let data = AMCApi.getData() {
-         // parse json
-         // populate headers
-         if let data = MemoryDb.shared.data {
-         // populate headers
-         let sorted = data.conferences.sorted { (conf1, conf2) -> Bool in
-         guard let c1 = conf1.start, let c2 = conf2.start else { return false }
-         return c1 < c2
-         }.filter({ conference -> Bool in
-         guard let date = conference.start else { return false }
-         return date >= Date()
-         })
-         
-         MemoryDb.shared.headers = sorted.reduce([]) { (curr, conf) -> [String] in
-         var tmp = curr
-         if(!curr.contains(conf.yearMonth)) {
-         tmp.append(conf.yearMonth)
-         }
-         return tmp
-         }
-         } else {
-         MemoryDb.shared.headers = []
-         }
-         
-         
-         }*/
-
     }
 }
 
@@ -296,8 +265,16 @@ extension ConferenceListViewController: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        // get current year month
+        guard let yearMonth = headers?[section] else { return 0 }
+        
+        // get conference items
         let items = isSearchActive ? filteredConferences : conferences
-        return items?.count ?? 0
+        
+        // retrieve conference
+        return items?.filter({ conf -> Bool in
+            conf.yearMonth == yearMonth
+        }).count ?? 0
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -321,10 +298,16 @@ extension ConferenceListViewController: UITableViewDelegate {
     }
 
     func getItem(_ index: IndexPath) -> Conference? {
-         // is search active?
-         var items = isSearchActive ? filteredConferences : conferences
+        // get current year month
+        guard let yearMonth = headers?[index.section] else { return nil }
         
-         return items?[index.row]
+        // get conference items
+        let items = isSearchActive ? filteredConferences : conferences
+        
+        // retrieve conference
+        return items?.filter({ conf -> Bool in
+            conf.yearMonth == yearMonth
+        })[index.row]
     }
 }
 
