@@ -49,6 +49,9 @@ class ConferenceListViewController: BaseViewController {
             conferences = data.filter { conf -> Bool in
                 return conf.startDate >= Date()
             }
+            
+            // set subscribe status
+            updateSubscribeStatusUI(isActive: getSubscribeStatus())
         }
     }
 
@@ -172,10 +175,8 @@ extension ConferenceListViewController {
     fileprivate func updateSubscribeStatusUI(isActive: Bool) {
         switch isActive {
         case true:
-            //subscribeButton.setBackgroundImage(nil, for: .normal, barMetrics: .default)
             subscribeButton.image = #imageLiteral(resourceName: "ic_notifications_active")
         case false:
-            //subscribeButton.setBackgroundImage(nil, for: .normal, barMetrics: .default)
             subscribeButton.image = #imageLiteral(resourceName: "ic_notifications_off")
         }
     }
