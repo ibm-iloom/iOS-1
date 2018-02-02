@@ -11,10 +11,12 @@ import Exteptional
 import Alamofire
 import SwiftyJSON
 import SwipeMenuViewController
+import OneSignal
 
 class ConferenceListViewController: BaseViewController {
 
     @IBOutlet weak var table: UITableView!
+    @IBOutlet weak var subscribeButton: UIBarButtonItem!
     @IBOutlet weak var swipeMenuView: SwipeMenuView! {
         didSet {
             swipeMenuView.delegate                          = self
@@ -125,6 +127,12 @@ class ConferenceListViewController: BaseViewController {
         navigationItem.hidesSearchBarWhenScrolling = false
         navigationItem.hidesBackButton = false
         navigationItem.largeTitleDisplayMode = .always
+        
+        // set subscribe button
+        subscribeButton.tintColor = .awesomeColor
+        
+        // set subscribe status
+        updateSubscribeStatusUI(isActive: getSubscribeStatus())
     }
 
     override func didReceiveMemoryWarning() {
@@ -152,6 +160,48 @@ class ConferenceListViewController: BaseViewController {
         table.deselectRow(at: index, animated: true)
     }
 
+}
+
+// MARK: - Subscribe
+extension ConferenceListViewController {
+    @IBAction func subscribeTrigger() {
+        let result = triggerSubscribeStatus()
+        updateSubscribeStatusUI(isActive: result)
+    }
+    
+    fileprivate func updateSubscribeStatusUI(isActive: Bool) {
+        switch isActive {
+        case true:
+            //subscribeButton.setBackgroundImage(nil, for: .normal, barMetrics: .default)
+            subscribeButton.image = #imageLiteral(resourceName: "ic_notifications_active")
+        case false:
+            //subscribeButton.setBackgroundImage(nil, for: .normal, barMetrics: .default)
+            subscribeButton.image = #imageLiteral(resourceName: "ic_notifications_off")
+        }
+    }
+    
+    fileprivate func getSubscribeStatus() -> Bool {
+        guard let cat = currentCategory else { return false }
+        return UserDefaults.standard.bool(forKey: "SUBSCRIBE/\(cat.name)")
+    }
+    
+    fileprivate func triggerSubscribeStatus() -> Bool {
+        guard let cat = currentCategory else { return false }
+        let status = !getSubscribeStatus()
+        UserDefaults.standard.set(status, forKey: "SUBSCRIBE/\(cat.name)")
+        UserDefaults.standard.synchronize()
+        
+        // manage onesignal
+        if(status) {
+            // activate onesignal
+            OneSignal.sendTag(cat.name, value: cat.name)
+        } else {
+            // deactivate onesignal
+            OneSignal.deleteTag(cat.name)
+        }
+        
+        return status
+    }
 }
 
 // MARK: - Networking

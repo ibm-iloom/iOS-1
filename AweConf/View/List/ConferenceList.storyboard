@@ -127,8 +127,15 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="oE4-1s-1YN"/>
                     </view>
-                    <navigationItem key="navigationItem" largeTitleDisplayMode="always" id="XCs-0N-mCN"/>
+                    <navigationItem key="navigationItem" largeTitleDisplayMode="always" id="MnM-ZP-ZSK">
+                        <barButtonItem key="rightBarButtonItem" id="vix-SN-DSI">
+                            <connections>
+                                <action selector="subscribeTrigger" destination="YnM-dj-im9" id="SxO-7k-u7I"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
+                        <outlet property="subscribeButton" destination="vix-SN-DSI" id="66x-gj-Pql"/>
                         <outlet property="swipeMenuView" destination="4ey-Rh-PXa" id="ryv-j8-Nqc"/>
                         <outlet property="table" destination="OPI-W1-S82" id="O8T-ji-n1Z"/>
                         <segue destination="nNy-DJ-x4I" kind="show" identifier="showDetail" id="vvk-oI-tvJ"/>
