@@ -22,13 +22,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationWillResignActive(_ application: UIApplication) {}
 
-    func applicationDidEnterBackground(_ application: UIApplication) {}
+    func applicationDidEnterBackground(_ application: UIApplication) {
+        UserDefaults.standard.set(Date().timeIntervalSince1970, forKey: "lastUse")
+        UserDefaults.standard.synchronize()
+    }
 
     func applicationWillEnterForeground(_ application: UIApplication) {}
 
     func applicationDidBecomeActive(_ application: UIApplication) {}
 
-    func applicationWillTerminate(_ application: UIApplication) {}
+    func applicationWillTerminate(_ application: UIApplication) {
+        UserDefaults.standard.set(Date().timeIntervalSince1970, forKey: "lastUse")
+        UserDefaults.standard.synchronize()
+    }
 
 }
 

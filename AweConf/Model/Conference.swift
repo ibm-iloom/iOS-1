@@ -37,7 +37,7 @@ class Conference: Object {
     
     var isNew: Bool {
         get {
-            let lastUpdate = Date(timeIntervalSince1970: Double(UserDefaults.standard.float(forKey: "lastUpdate")))
+            let lastUpdate = Date(timeIntervalSince1970: UserDefaults.standard.double(forKey: "lastUse"))
             return self.added > lastUpdate
         }
     }
@@ -88,7 +88,10 @@ class Conference: Object {
         self.approved = json.boolValue("approved")
         self.lat = json.doubleValue("lat")
         self.lon = json.doubleValue("lon")
-        self.added = dateFormatter.date(from: json.stringValue("added")) ?? Date()
+
+        let addedDateString = json.stringValue("added")
+        let addedIndexEnd = addedDateString.index(addedDateString.startIndex, offsetBy: 10)
+        self.added = dateFormatter.date(from: addedDateString.substring(to: addedIndexEnd)) ?? Date()
         
         // realm
         let realm = try! Realm()
