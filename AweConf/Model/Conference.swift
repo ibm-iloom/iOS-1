@@ -78,7 +78,7 @@ class Conference: Object {
         
         let endDateString = json.stringValue("enddate")
         let endIndexEnd = endDateString.index(endDateString.startIndex, offsetBy: 10)
-        self.endDate = dateFormatter.date(from: endDateString.substring(to: startIndexEnd)) ?? Date()
+        self.endDate = dateFormatter.date(from: endDateString.substring(to: endIndexEnd)) ?? Date()
         
         self.city = json.stringValue("city")
         self.address = json.stringValue("where")
