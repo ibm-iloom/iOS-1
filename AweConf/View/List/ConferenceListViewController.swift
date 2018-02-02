@@ -168,8 +168,29 @@ class ConferenceListViewController: BaseViewController {
 // MARK: - Subscribe
 extension ConferenceListViewController {
     @IBAction func subscribeTrigger() {
-        let result = triggerSubscribeStatus()
-        updateSubscribeStatusUI(isActive: result)
+        
+        guard let category = currentCategory else { return }
+        
+        var msg = ""
+        switch(getSubscribeStatus()) {
+        case true:
+            msg = "Would you like to stop receiving notification for \(category.name)?"
+        case false:
+            msg = "Would you like to start receiving notification for \(category.name)?"
+        }
+
+        let actionSheetController = UIAlertController (title: "Push Notification \(category.name)", message: msg, preferredStyle: .actionSheet)
+        
+        actionSheetController.addAction(UIAlertAction(title: "No", style: .cancel, handler: nil))
+        
+        actionSheetController.addAction(UIAlertAction(title: "Yes", style: .default, handler: { (actionSheetController) -> Void in
+            let result = self.triggerSubscribeStatus()
+            self.updateSubscribeStatusUI(isActive: result)
+        }))
+        
+        present(actionSheetController, animated: true, completion: nil)
+        
+       
     }
     
     fileprivate func updateSubscribeStatusUI(isActive: Bool) {
