@@ -87,6 +87,7 @@ class ConferenceListViewController: BaseViewController {
     fileprivate var isSearchActive: Bool {
         return (searchController.isActive && searchController.searchBar.text != "")
     }
+    fileprivate var monthHeaders = [String]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -201,11 +202,12 @@ extension ConferenceListViewController {
                 // sync conferences
                 self.getConferences(callback: { conf in
                     
+                    // generate month headers
+                    
                     // manage current
                     if let current = self.currentCategory {
                         self.currentCategory = nil
                         self.currentCategory = current
-                        
                     } else {
                         self.currentCategory = self.categories?[0]
                     }
@@ -250,6 +252,11 @@ extension ConferenceListViewController {
          }*/
 
     }
+    
+    fileprivate func generateHeaders() {
+        // clean up all
+        monthHeaders.removeAll()
+    }
 }
 
 // MARK: - UISearchBar Delegate
@@ -278,7 +285,7 @@ extension ConferenceListViewController: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        var items = isSearchActive ? filteredConferences : conferences
+        let items = isSearchActive ? filteredConferences : conferences
         return items?.count ?? 0
     }
 
