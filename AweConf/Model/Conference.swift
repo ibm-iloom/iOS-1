@@ -70,11 +70,12 @@ class Conference: Object {
         self.id = json.stringValue("_id")
         self.title = json.stringValue("title")
         self.year = json.intValue("year")
-        let startDateString = json.stringValue("startdate")
+        
+        let startDateString = json["date"]["start"].stringValue
         let startIndexEnd = startDateString.index(startDateString.startIndex, offsetBy: 10)
         self.startDate = dateFormatter.date(from: startDateString.substring(to: startIndexEnd)) ?? Date()
         
-        let endDateString = json.stringValue("enddate")
+        let endDateString = json["date"]["end"].stringValue
         let endIndexEnd = endDateString.index(endDateString.startIndex, offsetBy: 10)
         self.endDate = dateFormatter.date(from: endDateString.substring(to: endIndexEnd)) ?? Date()
         
@@ -86,8 +87,8 @@ class Conference: Object {
         self.emojiFlag = json.stringValue("emojiflag")
         self.twitter = json.stringValue("twitter")
         self.approved = json.boolValue("approved")
-        self.lat = json.doubleValue("lat")
-        self.lon = json.doubleValue("lon")
+        self.lat = json["geo"]["lat"].doubleValue
+        self.lon = json["geo"]["lng"].doubleValue
 
         let addedDateString = json.stringValue("added")
         let addedIndexEnd = addedDateString.index(addedDateString.startIndex, offsetBy: 10)
