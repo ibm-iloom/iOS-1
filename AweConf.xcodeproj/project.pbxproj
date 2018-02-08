@@ -11,6 +11,7 @@
 		2CA6C0480AB17B3D7049803D /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CA6CA4561D8266C5843ACCE /* Category.swift */; };
 		2CA6C35FCA962D4098FDB8EF /* AweConfApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CA6CD682836F8CA0A50C4F8 /* AweConfApi.swift */; };
 		2CA6C36DD39E6DCFDF8AE0AC /* Topic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CA6C05AAA01BD278F8D5F00 /* Topic.swift */; };
+		4817BD36202C9BB600A8CA01 /* AweConf.entitlements in Resources */ = {isa = PBXBuildFile; fileRef = 485A56792020899A00BECD56 /* AweConf.entitlements */; };
 		485A5670202088C500BECD56 /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 485A566F202088C500BECD56 /* NotificationService.swift */; };
 		485A5674202088C500BECD56 /* AweConfPushNotification.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 485A566D202088C400BECD56 /* AweConfPushNotification.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		4879DEFF2020760300CBDC14 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4879DEFE2020760300CBDC14 /* AppDelegate.swift */; };
@@ -324,6 +325,9 @@
 							com.apple.Push = {
 								enabled = 1;
 							};
+							com.apple.SafariKeychain = {
+								enabled = 1;
+							};
 						};
 					};
 				};
@@ -359,6 +363,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4817BD36202C9BB600A8CA01 /* AweConf.entitlements in Resources */,
 				48AD0E2E2020AA050071C441 /* ConferenceList.storyboard in Resources */,
 				4879DF092020760300CBDC14 /* LaunchScreen.storyboard in Resources */,
 				48AD0E382020AA570071C441 /* ConferenceSubmit.storyboard in Resources */,

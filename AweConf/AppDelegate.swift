@@ -36,6 +36,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UserDefaults.standard.synchronize()
     }
 
+    func application(_ application: UIApplication, continue userActivity: NSUserActivity, restorationHandler: @escaping ([Any]?) -> Void) -> Bool {
+        guard
+            let url = userActivity.webpageURL,
+            let confUrl = url.fragment
+        else { return true }
+        
+        let confId = confUrl.replacingOccurrences(of: "/conference/", with: "")
+        // TODO: open conference detail
+        
+        return true
+    }
 }
 
 // MARK: - Push Notification
