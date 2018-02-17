@@ -7,6 +7,7 @@ PODS:
   - Realm/Headers (3.1.0)
   - RealmSwift (3.1.0):
     - Realm (= 3.1.0)
+  - RunOnce (0.1.0)
   - SwiftDate (4.5.1)
   - SwiftyJSON (4.0.0)
   - SwipeMenuViewController (2.0.7)
@@ -16,6 +17,7 @@ DEPENDENCIES:
   - Exteptional (~> 0.2.6)
   - OneSignal (~> 2.6.2)
   - RealmSwift (~> 3.1.0)
+  - RunOnce
   - SwiftDate (~> 4.5.1)
   - SwiftyJSON (~> 4.0.0)
   - SwipeMenuViewController (~> 2.0.1)
@@ -26,10 +28,11 @@ SPEC CHECKSUMS:
   OneSignal: 95127bce89b9e495079e7205e3d47c88590b5750
   Realm: 09513d7c054678d65cd02ce09871f805b0d758ac
   RealmSwift: e868fee9b10e5490ad94b6b6ecd9027944da1824
+  RunOnce: 1559246a64b8313fe255702297d4b4b68b12b203
   SwiftDate: 7b56d42a221f582047287deb256b23fc5ed49a60
   SwiftyJSON: 070dabdcb1beb81b247c65ffa3a79dbbfb3b48aa
   SwipeMenuViewController: fe912fbd0ae2cc1607b99084ca718cc7e60e50f9
 
-PODFILE CHECKSUM: 768aa6474f93bacdeda899f0ca8ac3e810d65a6d
+PODFILE CHECKSUM: 4968db3a252a8f38ac4d1f29d33ad6c9cdc4b945
 
 COCOAPODS: 1.4.0

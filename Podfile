@@ -10,6 +10,7 @@ target 'AweConf' do
   pod 'RealmSwift', '~> 3.1.0'
   pod 'SwiftyJSON', '~> 4.0.0'
   pod 'SwipeMenuViewController', '~> 2.0.1'
+  pod 'RunOnce'
 end
 
 target 'AweConfPushNotification' do

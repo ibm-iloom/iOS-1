@@ -12,6 +12,7 @@ import Alamofire
 import SwiftyJSON
 import SwipeMenuViewController
 import OneSignal
+import RunOnce
 
 class ConferenceListViewController: BaseViewController {
 
@@ -114,6 +115,12 @@ class ConferenceListViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        Run.once("reset.database", action: {
+            try! self.realm.write {
+                self.realm.deleteAll()
+            }
+        })
 
         // set searchController
         searchController.searchResultsUpdater = self
