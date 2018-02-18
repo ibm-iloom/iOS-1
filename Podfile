@@ -11,6 +11,7 @@ target 'AweConf' do
   pod 'SwiftyJSON', '~> 4.0.0'
   pod 'SwipeMenuViewController', '~> 2.0.1'
   pod 'RunOnce'
+  pod 'Kingfisher'
 end
 
 target 'AweConfPushNotification' do

@@ -1,12 +1,13 @@
 PODS:
   - Alamofire (4.6.0)
   - Exteptional (0.2.6)
+  - Kingfisher (4.6.2)
   - OneSignal (2.6.2)
-  - Realm (3.1.0):
-    - Realm/Headers (= 3.1.0)
-  - Realm/Headers (3.1.0)
-  - RealmSwift (3.1.0):
-    - Realm (= 3.1.0)
+  - Realm (3.1.1):
+    - Realm/Headers (= 3.1.1)
+  - Realm/Headers (3.1.1)
+  - RealmSwift (3.1.1):
+    - Realm (= 3.1.1)
   - RunOnce (0.1.0)
   - SwiftDate (4.5.1)
   - SwiftyJSON (4.0.0)
@@ -15,6 +16,7 @@ PODS:
 DEPENDENCIES:
   - Alamofire (~> 4.6.0)
   - Exteptional (~> 0.2.6)
+  - Kingfisher
   - OneSignal (~> 2.6.2)
   - RealmSwift (~> 3.1.0)
   - RunOnce
@@ -25,14 +27,15 @@ DEPENDENCIES:
 SPEC CHECKSUMS:
   Alamofire: f41a599bd63041760b26d393ec1069d9d7b917f4
   Exteptional: b8aa08121998a6bf40a55fe9496b2b8ac192048c
+  Kingfisher: 55b9c395bf8d3949676ad3861111923990ab68cf
   OneSignal: 95127bce89b9e495079e7205e3d47c88590b5750
-  Realm: 09513d7c054678d65cd02ce09871f805b0d758ac
-  RealmSwift: e868fee9b10e5490ad94b6b6ecd9027944da1824
+  Realm: 42d1c38a5b1bbcc828b48a7ce702cb86fc68adf4
+  RealmSwift: d31937ca6a6ee54acde64ec839523c0a3c04924b
   RunOnce: 1559246a64b8313fe255702297d4b4b68b12b203
   SwiftDate: 7b56d42a221f582047287deb256b23fc5ed49a60
   SwiftyJSON: 070dabdcb1beb81b247c65ffa3a79dbbfb3b48aa
   SwipeMenuViewController: fe912fbd0ae2cc1607b99084ca718cc7e60e50f9
 
-PODFILE CHECKSUM: 4968db3a252a8f38ac4d1f29d33ad6c9cdc4b945
+PODFILE CHECKSUM: fa91ee27255231d47e65b9afb918ec42581e5646
 
 COCOAPODS: 1.4.0

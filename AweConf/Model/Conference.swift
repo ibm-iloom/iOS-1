@@ -141,6 +141,9 @@ class Conference: Object {
             }).first {
                 // add to list
                 self.speakers.append(item)
+            } else {
+                let user = User(name: speaker.stringValue)
+                self.speakers.append(user)
             }
         }
     }

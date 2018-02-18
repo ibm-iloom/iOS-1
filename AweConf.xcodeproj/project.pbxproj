@@ -13,6 +13,7 @@
 		2CA6C36DD39E6DCFDF8AE0AC /* Topic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CA6C05AAA01BD278F8D5F00 /* Topic.swift */; };
 		4817BD36202C9BB600A8CA01 /* AweConf.entitlements in Resources */ = {isa = PBXBuildFile; fileRef = 485A56792020899A00BECD56 /* AweConf.entitlements */; };
 		48243CDE20398F3F00F90111 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48243CDD20398F3F00F90111 /* User.swift */; };
+		48243CE1203994C300F90111 /* UserCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48243CE0203994C300F90111 /* UserCollectionViewCell.swift */; };
 		485A5670202088C500BECD56 /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 485A566F202088C500BECD56 /* NotificationService.swift */; };
 		485A5674202088C500BECD56 /* AweConfPushNotification.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 485A566D202088C400BECD56 /* AweConfPushNotification.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		4879DEFF2020760300CBDC14 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4879DEFE2020760300CBDC14 /* AppDelegate.swift */; };
@@ -65,6 +66,7 @@
 		2CA6CD682836F8CA0A50C4F8 /* AweConfApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AweConfApi.swift; sourceTree = "<group>"; };
 		42DED8B4BFDF332299616620 /* Pods-AweConfPushNotification.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AweConfPushNotification.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AweConfPushNotification/Pods-AweConfPushNotification.debug.xcconfig"; sourceTree = "<group>"; };
 		48243CDD20398F3F00F90111 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		48243CE0203994C300F90111 /* UserCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCollectionViewCell.swift; sourceTree = "<group>"; };
 		485A566D202088C400BECD56 /* AweConfPushNotification.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = AweConfPushNotification.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		485A566F202088C500BECD56 /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
 		485A5671202088C500BECD56 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -118,6 +120,14 @@
 				156BD87D5F0492479CA912A5 /* Pods_AweConfPushNotification.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		48243CDF2039949D00F90111 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				48243CE0203994C300F90111 /* UserCollectionViewCell.swift */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 		485A566E202088C500BECD56 /* AweConfPushNotification */ = {
@@ -208,6 +218,7 @@
 		48AD0E3A2020AA690071C441 /* Detail */ = {
 			isa = PBXGroup;
 			children = (
+				48243CDF2039949D00F90111 /* Cells */,
 				48AD0E412020ABF40071C441 /* MapAnnotation */,
 				48AD0E2F2020AA140071C441 /* ConferenceDetail.storyboard */,
 				48AD0E332020AA3C0071C441 /* ConferenceDetailViewController.swift */,
@@ -387,6 +398,7 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-AweConf/Pods-AweConf-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/Exteptional/Exteptional.framework",
+				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
 				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
 				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/RunOnce/RunOnce.framework",
@@ -398,6 +410,7 @@
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Exteptional.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RunOnce.framework",
@@ -500,6 +513,7 @@
 				48243CDE20398F3F00F90111 /* User.swift in Sources */,
 				48AD0E362020AA4C0071C441 /* ConferenceSubmitViewController.swift in Sources */,
 				4879DEFF2020760300CBDC14 /* AppDelegate.swift in Sources */,
+				48243CE1203994C300F90111 /* UserCollectionViewCell.swift in Sources */,
 				48AD0E462020AC340071C441 /* UIColor+Extension.swift in Sources */,
 				48DEF06E2020BD790074073F /* JSON+Extension.swift in Sources */,
 				2CA6C35FCA962D4098FDB8EF /* AweConfApi.swift in Sources */,

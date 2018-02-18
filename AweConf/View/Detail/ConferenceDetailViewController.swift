@@ -26,6 +26,12 @@ class ConferenceDetailViewController: BaseViewController {
     @IBOutlet weak var mapView: MKMapView!
 
     @IBOutlet weak var mapHeight: NSLayoutConstraint!
+    
+    @IBOutlet weak var speakersStack: UIStackView!
+    @IBOutlet weak var speakersCollection: UICollectionView!
+    
+    @IBOutlet weak var attendeesLabel: UILabel!
+    @IBOutlet weak var attendeesCollection: UICollectionView!
 
     var conference: Conference?
 
@@ -215,4 +221,24 @@ extension ConferenceDetailViewController {
         }
     }
 
+}
+
+// MARK: - Collection
+extension ConferenceDetailViewController: UICollectionViewDataSource {
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 1
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return self.conference?.speakers.count ?? 0
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "speakerCell", for: indexPath) as! UserCollectionViewCell
+        guard
+            let conference = self.conference
+            else { return cell }
+        cell.setup(imageUrl: conference.speakers[indexPath.row].name)
+        return cell
+    }
 }
