@@ -88,6 +88,9 @@ class ConferenceDetailViewController: BaseViewController {
 extension ConferenceDetailViewController {
     fileprivate func populateUI() {
         guard let conference = conference else { return }
+        
+        // hide speakers if none
+        speakersStack.isHidden = (conference.speakers.count == 0)
 
         // set buttons
         websiteButton.setTitle(conference.homepage, for: .normal)
