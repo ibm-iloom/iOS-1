@@ -411,7 +411,7 @@ extension ConferenceListViewController: SwipeMenuViewDataSource {
     }
 
     func swipeMenuView(_ swipeMenuView: SwipeMenuView, titleForPageAt index: Int) -> String {
-        return categories?[index].name ?? ""
+        return categories?[index].name.uppercased() ?? ""
     }
 
 }
