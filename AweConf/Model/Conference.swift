@@ -30,6 +30,8 @@ class Conference: Object {
     @objc dynamic var added = Date()
     let topic = List<Topic>()
     let category = List<Category>()
+    let speakers = List<User>()
+    let attendees = List<User>()
     
     override static func primaryKey() -> String? {
         return "id"
@@ -119,6 +121,28 @@ class Conference: Object {
          self.topic.add(it)
          }
          }*/
+        
+        // attendees
+        for attendee in json["attendees"].arrayValue {
+            // find item
+            if let item = realm.objects(User.self).filter({ user -> Bool in
+                return user.name == attendee.stringValue
+            }).first {
+                // add to list
+                self.attendees.append(item)
+            }
+        }
+        
+        // speakers
+        for speaker in json["speakers"].arrayValue {
+            // find item
+            if let item = realm.objects(User.self).filter({ user -> Bool in
+                return user.name == speaker.stringValue
+            }).first {
+                // add to list
+                self.speakers.append(item)
+            }
+        }
     }
     
 }

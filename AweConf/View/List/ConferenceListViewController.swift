@@ -38,8 +38,10 @@ class ConferenceListViewController: BaseViewController {
 
     fileprivate var currentCategory: Category? = nil {
         didSet {
-                    
-            var data = Array(self.realm.objects(Conference.self).sorted(byKeyPath: "startDate"))
+            
+            guard let items = self.realm?.objects(Conference.self) else { return }
+            
+            var data = Array(items.sorted(byKeyPath: "startDate"))
 
             if let category = currentCategory {
                 data = data.filter({ conf -> Bool in
@@ -117,8 +119,8 @@ class ConferenceListViewController: BaseViewController {
         super.viewDidLoad()
         
         Run.once("reset.database", action: {
-            try! self.realm.write {
-                self.realm.deleteAll()
+            try! self.realm?.write {
+                self.realm?.deleteAll()
             }
         })
 
@@ -246,8 +248,8 @@ extension ConferenceListViewController {
                 // loop categories
                 for category in json["categories"].arrayValue {
                     let cat = Category(name: category.stringValue)
-                    try! self.realm.write {
-                        self.realm.add(cat, update: true)
+                    try! self.realm?.write {
+                        self.realm?.add(cat, update: true)
                     }
                 }
                 callback(true)
@@ -268,8 +270,8 @@ extension ConferenceListViewController {
                 // loop categories
                 for conference in json["conferences"].arrayValue {
                     let conf = Conference(json: conference)
-                    try! self.realm.write {
-                        self.realm.add(conf, update: true)
+                    try! self.realm?.write {
+                        self.realm?.add(conf, update: true)
                     }
 
                 }
@@ -293,8 +295,11 @@ extension ConferenceListViewController {
         // sync cats
         getCategories { cats in
             if cats {
+                
+                guard let items = self.realm?.objects(Category.self) else { return }
+                
                 // check categories
-                self.categories = Array(self.realm.objects(Category.self).sorted(byKeyPath: "name"))
+                self.categories = Array(items.sorted(byKeyPath: "name"))
 
                 // sync conferences
                 self.getConferences(callback: { conf in
