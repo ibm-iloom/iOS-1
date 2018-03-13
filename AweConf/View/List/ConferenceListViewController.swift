@@ -153,12 +153,35 @@ class ConferenceListViewController: BaseViewController {
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        
+        // pre-populate
+        populateData()
+        
         getRemoteData()
 
         // add refresh control
         table.refreshControl = refreshControl
     }
 
+    private func populateData() {
+        guard let items = self.realm?.objects(Category.self) else { return }
+        
+        // check categories
+        self.categories = Array(items.sorted(byKeyPath: "name"))
+        
+        // manage current
+        if let current = self.currentCategory {
+            self.currentCategory = nil
+            self.currentCategory = current
+        } else {
+            self.currentCategory = self.categories?[0]
+        }
+        
+        // force refresh
+        self.table.reloadData()
+
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard
             let vc = segue.destination as? ConferenceDetailViewController,

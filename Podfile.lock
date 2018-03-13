@@ -1,7 +1,7 @@
 PODS:
   - Alamofire (4.6.0)
   - Exteptional (0.2.6)
-  - Kingfisher (4.6.2)
+  - Kingfisher (4.6.3)
   - OneSignal (2.6.2)
   - Realm (3.1.1):
     - Realm/Headers (= 3.1.1)
@@ -27,7 +27,7 @@ DEPENDENCIES:
 SPEC CHECKSUMS:
   Alamofire: f41a599bd63041760b26d393ec1069d9d7b917f4
   Exteptional: b8aa08121998a6bf40a55fe9496b2b8ac192048c
-  Kingfisher: 55b9c395bf8d3949676ad3861111923990ab68cf
+  Kingfisher: 98e6d5b5e807645743e8ed5ececd25d688d38452
   OneSignal: 95127bce89b9e495079e7205e3d47c88590b5750
   Realm: 42d1c38a5b1bbcc828b48a7ce702cb86fc68adf4
   RealmSwift: d31937ca6a6ee54acde64ec839523c0a3c04924b
