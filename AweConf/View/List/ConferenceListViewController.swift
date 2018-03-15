@@ -15,7 +15,7 @@ import OneSignal
 import RunOnce
 
 class ConferenceListViewController: BaseViewController {
-
+    
     @IBOutlet weak var table: UITableView!
     @IBOutlet weak var subscribeButton: UIBarButtonItem!
     @IBOutlet weak var swipeMenuView: SwipeMenuView! {
@@ -35,14 +35,14 @@ class ConferenceListViewController: BaseViewController {
             swipeMenuView.reloadData(options: options)
         }
     }
-
+    
     fileprivate var currentCategory: Category? = nil {
         didSet {
             
             guard let items = self.realm?.objects(Conference.self) else { return }
             
             var data = Array(items.sorted(byKeyPath: "startDate"))
-
+            
             if let category = currentCategory {
                 data = data.filter({ conf -> Bool in
                     return conf.category.contains(category)
@@ -57,7 +57,7 @@ class ConferenceListViewController: BaseViewController {
             updateSubscribeStatusUI(isActive: getSubscribeStatus())
         }
     }
-
+    
     fileprivate var lastUpdate = Date()
     fileprivate var conferences: [Conference]? {
         didSet {
@@ -100,7 +100,7 @@ class ConferenceListViewController: BaseViewController {
             // move to index
             swipeMenuView.jump(to: index, animated: false)
             swipeMenuView.reloadData(default: index)
-
+            
         }
     }
     fileprivate let searchController = UISearchController(searchResultsController: nil)
@@ -123,7 +123,7 @@ class ConferenceListViewController: BaseViewController {
                 self.realm?.deleteAll()
             }
         })
-
+        
         // set searchController
         searchController.searchResultsUpdater = self
         searchController.searchBar.placeholder = "Filter"
@@ -131,9 +131,9 @@ class ConferenceListViewController: BaseViewController {
         searchController.dimsBackgroundDuringPresentation = false
         searchController.hidesNavigationBarDuringPresentation = false
         definesPresentationContext = true
-
+        
         title = "Conferences"
-
+        
         // set extra stuff for navigation bar
         navigationItem.searchController = searchController
         navigationItem.hidesSearchBarWhenScrolling = false
@@ -146,11 +146,11 @@ class ConferenceListViewController: BaseViewController {
         // set subscribe status
         updateSubscribeStatusUI(isActive: getSubscribeStatus())
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
@@ -158,11 +158,11 @@ class ConferenceListViewController: BaseViewController {
         populateData()
         
         getRemoteData()
-
+        
         // add refresh control
         table.refreshControl = refreshControl
     }
-
+    
     private func populateData() {
         guard let items = self.realm?.objects(Category.self) else { return }
         
@@ -170,16 +170,17 @@ class ConferenceListViewController: BaseViewController {
         self.categories = Array(items.sorted(byKeyPath: "name"))
         
         // manage current
-        if let current = self.currentCategory {
-            self.currentCategory = nil
-            self.currentCategory = current
-        } else {
-            self.currentCategory = self.categories?[0]
+        if(self.categories?.count ?? 0 > 0) {
+            if let current = self.currentCategory {
+                self.currentCategory = nil
+                self.currentCategory = current
+            } else {
+                self.currentCategory = self.categories?[0]
+            }
         }
-        
         // force refresh
         self.table.reloadData()
-
+        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -188,13 +189,13 @@ class ConferenceListViewController: BaseViewController {
             let index = table.indexPathForSelectedRow,
             let conference = getItem(index)
             else { return }
-
+        
         // pass currently selected conference
         vc.conference = conference
         // deselect row
         table.deselectRow(at: index, animated: true)
     }
-
+    
 }
 
 // MARK: - Subscribe
@@ -210,7 +211,7 @@ extension ConferenceListViewController {
         case false:
             msg = "Would you like to start receiving notification for \(category.name)?"
         }
-
+        
         let actionSheetController = UIAlertController (title: "Push Notification \(category.name)", message: msg, preferredStyle: .actionSheet)
         
         actionSheetController.addAction(UIAlertAction(title: "No", style: .cancel, handler: nil))
@@ -222,7 +223,7 @@ extension ConferenceListViewController {
         
         present(actionSheetController, animated: true, completion: nil)
         
-       
+        
     }
     
     fileprivate func updateSubscribeStatusUI(isActive: Bool) {
@@ -260,14 +261,14 @@ extension ConferenceListViewController {
 
 // MARK: - Networking
 extension ConferenceListViewController {
-
+    
     fileprivate func getCategories(callback: @escaping (_ success: Bool) -> Void) {
         Alamofire.request(AweConfApi.categories()).responseJSON { resp in
             switch resp.result {
             case .success(let data):
-
+                
                 let json = JSON(data)
-
+                
                 // loop categories
                 for category in json["categories"].arrayValue {
                     let cat = Category(name: category.stringValue)
@@ -276,45 +277,45 @@ extension ConferenceListViewController {
                     }
                 }
                 callback(true)
-
+                
             case .failure(let error):
                 print("Request failed with error: \(error)")
                 callback(false)
             }
         }
     }
-
+    
     fileprivate func getConferences(callback: @escaping (_ success: Bool) -> Void) {
         Alamofire.request(AweConfApi.list()).responseJSON { resp in
             switch resp.result {
             case .success(let data):
                 let json = JSON(data)
-
+                
                 // loop categories
                 for conference in json["conferences"].arrayValue {
                     let conf = Conference(json: conference)
                     try! self.realm?.write {
                         self.realm?.add(conf, update: true)
                     }
-
+                    
                 }
                 callback(true)
-
+                
             case .failure(let error):
                 print("Request failed with error: \(error)")
                 callback(false)
             }
         }
     }
-
+    
     @objc fileprivate func getRemoteData() {
         // start refreshing
         refreshControl.beginRefreshing()
-
+        
         // show latest update
         let lastUpdateText = "⏱ last update: \(lastUpdate.toString(dateFormat: "dd/MM/yyyy @ HH:mm"))"
         refreshControl.attributedTitle = NSAttributedString(string: lastUpdateText)
-
+        
         // sync cats
         getCategories { cats in
             if cats {
@@ -323,7 +324,7 @@ extension ConferenceListViewController {
                 
                 // check categories
                 self.categories = Array(items.sorted(byKeyPath: "name"))
-
+                
                 // sync conferences
                 self.getConferences(callback: { conf in
                     
@@ -334,10 +335,10 @@ extension ConferenceListViewController {
                     } else {
                         self.currentCategory = self.categories?[0]
                     }
-
+                    
                     // force refresh
                     self.table.reloadData()
-
+                    
                     // stop refreshing
                     self.refreshControl.endRefreshing()
                 })
@@ -349,19 +350,19 @@ extension ConferenceListViewController {
 // MARK: - UISearchBar Delegate
 extension ConferenceListViewController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
-
+        
         // check if search is active
         if let searchText = searchController.searchBar.text, !searchText.isEmpty {
             // force clear the results first
             filteredConferences?.removeAll()
-
+            
             // populate filtered results
             filteredConferences = conferences?.filter({ conf -> Bool in
                 return conf.title.lowercased().contains(searchText.lowercased()) ||
                     conf.address.lowercased().contains(searchText.lowercased())
             })
         }
-
+        
     }
 }
 
@@ -370,7 +371,7 @@ extension ConferenceListViewController: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         return headers?.count ?? 0
     }
-
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // get current year month
         guard let yearMonth = headers?[section] else { return 0 }
@@ -383,7 +384,7 @@ extension ConferenceListViewController: UITableViewDataSource {
             conf.yearMonth == yearMonth
         }).count ?? 0
     }
-
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "conferenceCell") as! ConferenceTableViewCell
         guard
@@ -399,11 +400,11 @@ extension ConferenceListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return headers?[section] ?? ""
     }
-
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         performSegue(withIdentifier: "showDetail", sender: self)
     }
-
+    
     func getItem(_ index: IndexPath) -> Conference? {
         // get current year month
         guard let yearMonth = headers?[index.section] else { return nil }
@@ -433,13 +434,13 @@ extension ConferenceListViewController: SwipeMenuViewDataSource {
     func swipeMenuView(_ swipeMenuView: SwipeMenuView, viewControllerForPageAt index: Int) -> UIViewController {
         return UIViewController()
     }
-
+    
     func numberOfPages(in swipeMenuView: SwipeMenuView) -> Int {
         return categories?.count ?? 0
     }
-
+    
     func swipeMenuView(_ swipeMenuView: SwipeMenuView, titleForPageAt index: Int) -> String {
         return categories?[index].name.uppercased() ?? ""
     }
-
+    
 }
